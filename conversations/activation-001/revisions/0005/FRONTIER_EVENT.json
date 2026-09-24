@@ -7,7 +7,7 @@
   "parent_revision": 4,
   "previous_event_digest": "212f0aab9d6666cdaaff1c4e6f45370463ca99bc198d59e5165d0992e2b9c21f",
   "event_type": "FRONTIER_BINDING_COMPLETED",
-  "event_digest": "20900e58581fe5813ff6f1138449f1b6851a30d370e091f29bceefa75a1503de",
+  "event_digest": "108eb3d2544719d98771ff03adad54a23966aa1efc92f937e6dffee2c7ae097c",
   "payload": {
     "trajectory_refs": [
       "T001",
@@ -70,6 +70,14 @@
       "frontier/core.py",
       "tests/mutation_frontier_v0_3.py",
       "tests/verify_frontier_v0_3.py"
+    ],
+    "normative_contract_refs": [
+      "protocol/CONVERSATION_FRONTIER_PROTOCOL_v0.3.md",
+      "protocol/PROVENANCE_TRUST_BOUNDARY_v0.3.md"
+    ],
+    "discovery_refs": [
+      "CONVERSATION_ENTRYPOINT.md",
+      "registry/CONVERSATIONS.json"
     ]
   }
 }
