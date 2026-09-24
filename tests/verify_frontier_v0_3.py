@@ -100,7 +100,7 @@ def main() -> None:
     assert stored['rejected_path_refs'] == reduced['rejected_path_refs']
     assert stored['constraint_refs'] == reduced['constraint_refs']
     assert stored['open_question_refs'] == reduced['open_question_refs']
-    assert stored['next_action']['action_id'] == reduced['next_action_id']
+    assert stored['next_action_ref'] == reduced['next_action_id']
     assert stored['status'] == reduced['status']
     assert stored['object_registry'] == reduced['object_registry']
     assert stored['revision_manifest'] == reduced['revision_manifest']
