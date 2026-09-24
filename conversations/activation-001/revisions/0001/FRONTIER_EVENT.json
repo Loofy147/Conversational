@@ -6,7 +6,7 @@
   "parent_revision": null,
   "previous_event_digest": null,
   "event_type": "FRONTIER_CREATED",
-  "event_digest": "4d14021ceb423a68244abb4ce92391e5a1cbb73dff43b289f864686a38826568",
+  "event_digest": "a2eab34cda9e94679a558f04f2034386830bdeb4d59a2fc8970876a0e9167a4c",
   "payload": {
     "origin": "Conversation work can lose its reasoning frontier when continuation depends on transient context.",
     "objective": "Preserve the work frontier across conversation boundaries without making reconstructed context canonical truth.",
