@@ -1,0 +1,27 @@
+{
+  "schema": "conversation-source-registry-v0.3",
+  "authority": "PROVENANCE_REGISTER_ONLY",
+  "sources": [
+    {"id":"S001","locator":"/KILL_TEST_REPORT.md","sha256":"1ceb372c186630aff17d868ae218f8a715cda8f28ba393a704a79041bcd26baf","class":"HISTORICAL_EVIDENCE","role":"skill_engine_kill_tests"},
+    {"id":"S002","locator":"/skill_engine.py","sha256":"867ac65de706786f727825b52e057c0af26d9888fa9e4170c729ca651c6cd5c3","class":"HISTORICAL_SOURCE","role":"skill_engine_implementation"},
+    {"id":"S003","locator":"/PROTOCOL_CONTRACT_v0.3.md","sha256":"975c5d4da4c75c932e4c1ce7f441ae6f1d8ae38437cc350fb83ada195e621a8b","class":"HISTORICAL_PROTOCOL","role":"experiment_semantics"},
+    {"id":"S004","locator":"/VERIFICATION_REPORT_v0.5.md","sha256":"0ae56b25c36035174b45ee2fd937f1260bf9d8f7892a912d2f13bd4f03b61c78","class":"HISTORICAL_VERIFICATION","role":"self_hosting_work_loop"},
+    {"id":"S005","locator":"/VERIFICATION_REPORT_v0.6.md","sha256":"61b1d44545cd084cab95ca2892c0389930cbbe1f576427d2b9889aa86c3d01fd","class":"HISTORICAL_VERIFICATION","role":"operator_surface"},
+    {"id":"S006","locator":"/VERIFICATION_REPORT_v0.7.md","sha256":"d298e256899f9c7161e3278c298da20dbbc4c09829b065feade7415eaf271ed8","class":"HISTORICAL_VERIFICATION","role":"continuation_semantics"},
+    {"id":"S007","locator":"/CONTINUATION_PROTOCOL_v0.7.md","sha256":"cbe10e7d7e3a973276aabc506507ec3b542af2fb696e90099d0bfbe70e735d7e","class":"HISTORICAL_PROTOCOL","role":"capability_lab_resume"},
+    {"id":"S008","locator":"/AUDIT_2026-09-23-v0.8.md","sha256":"1c6efbbfeb74f409e0ee7682e6f5f2db28652fe9d264dfaada807ad55ee21035","class":"HISTORICAL_AUDIT","role":"epistemic_semantics"},
+    {"id":"S009","locator":"/EPISTEMIC_PROTOCOL_v0.10.md","sha256":"8adaf9e7dca6844077dae87b423dc99979e9ae1b9c97aa96e1ef999cc5b3adb1","class":"HISTORICAL_PROTOCOL","role":"epistemic_kernel"},
+    {"id":"S010","locator":"/VERIFICATION_REPORT_v0.9.md","sha256":"e878bbdad158c82af6cc02dd547fa586766ff14211a9d64920c484e571a86d15","class":"HISTORICAL_VERIFICATION","role":"fail_closed_verification"},
+    {"id":"S011","locator":"/VERIFICATION_REPORT_v0.11.md","sha256":"3abf4fd70c7dfbd8a14d1746cf7db26f02046855de02b5ade5cc46d917566fd1","class":"HISTORICAL_VERIFICATION","role":"relational_applicability"},
+    {"id":"S012","locator":"/AUDIT_2026-09-23-v0.12.md","sha256":"c69356e78c54c321a0589b8e8709d1b85fdd7637e2abc187facbfd143b783b08","class":"HISTORICAL_AUDIT","role":"applicability_epistemic_bridge"},
+    {"id":"S013","locator":"/RELATIONAL_PROTOCOL_v0.11.md","sha256":"398d05af60fe121092946f1ac235fb6a013f9e8c9abf159dab825ed40db62a09","class":"HISTORICAL_PROTOCOL","role":"relational_applicability"},
+    {"id":"S014","locator":"/DEPENDENCY_AUTHORITY_PROTOCOL_v0.13.md","sha256":"c0188ce90a24d0e07bd7685b6d66ac43201f66dfd77043ac74be66256a1ced8b","class":"HISTORICAL_PROTOCOL","role":"dependency_authority_separation"},
+    {"id":"S015","locator":"/EVIDENCE_VALIDITY_SEMANTICS_v0_14.md","sha256":"68563a42dc9dc541b4730710629eaeb922c115a50b57765436bf83992f82259a","class":"HISTORICAL_PROTOCOL","role":"evidence_usability"},
+    {"id":"S016","locator":"/CROSS_DOMAIN_LIFECYCLE_STRESS_REPORT.md","sha256":"a2a90b2c45ff0e8432974d093247b93f2ab770c2a5af25920ecafc743148e382","class":"PINNED_EVIDENCE","role":"cross_domain_requalification"},
+    {"id":"S017","locator":"/AI_EXECUTION_ASSURANCE_INTEGRATION_SPEC_v0.1.md","sha256":"831677e71e17320dcec38588d5a447a89b761099dd440940e5463740f6017e01","class":"HISTORICAL_ARCHITECTURE","role":"assurance_layering"},
+    {"id":"S018","locator":"/AI_Engineering_Research_Operating_Spec_v2_1.docx","sha256":"19db051baad249bcd10fe52955f7afdee2006fc4ccbd06e34b534d6de11f729c","class":"HISTORICAL_OPERATING_SPEC","role":"verification_and_durability_rules"},
+    {"id":"S019","locator":"/CANONICAL_STATE_SPEC.md","sha256":"2fcce96d1cb7c28d4f70e166d25467ab24a1eccf94eee74418a659196da30a2d","class":"HISTORICAL_ARCHITECTURE","role":"context_scoped_capability_state"},
+    {"id":"S020","locator":"/mechanism_frontier_shift.py","sha256":"73669ddbbb4fa5711f47bfdae97b573ddc74beb01ccdee03bb173f47acc8ee17","class":"HISTORICAL_RESEARCH","role":"mechanism_frontier_shift"},
+    {"id":"S021","locator":"/PROJECT_PORTFOLIO_BASELINE_2026-09-07.md","sha256":"4f21f2069fae18b75f6e755d70ab5988efdee73f3b5943aa0b8331fca34b2611","class":"HISTORICAL_ARCHITECTURE","role":"portfolio_and_system_of_systems"}
+  ]
+}
