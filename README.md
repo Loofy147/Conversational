@@ -15,7 +15,7 @@ Start with CONVERSATION_ENTRYPOINT.md. It defines the exact discovery and restor
 ## Current protocol
 
 - Frontier protocol: v0.3
-- Activation fixture: 001, hardened candidate revision 4
+- Activation fixture: 001, hardened candidate revision 5
 - Current frontier status: CANDIDATE
 - Restore status: UNVERIFIED
 - Publication status: PUBLISHED_TO_REPO_BRANCH
