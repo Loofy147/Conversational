@@ -7,17 +7,62 @@
   "parent_revision": 4,
   "previous_event_digest": "212f0aab9d6666cdaaff1c4e6f45370463ca99bc198d59e5165d0992e2b9c21f",
   "event_type": "FRONTIER_BINDING_COMPLETED",
-  "event_digest": "bfa01b6137db52da1eb52eb40747f930b7476612735054559e90f4f7093bcfea",
+  "event_digest": "0f4ab8bacd486373a26822a221a6af214671cc7161696d3dadf2cbd3b294bf08",
   "payload": {
-    "trajectory_refs": ["T001","T002","T003","T004","T005","T006","T007","T008","T009","T010","T011","T012","T013","T014","T015","T016","T017","T018","T019"],
-    "preserved_opportunity_refs": ["O001","O002","O003","O004","O005","O006","O007","O008","O009","O010","O011","O012","O013","O014"],
-    "forbidden_assumption_refs": ["C001","C002","C003","C004","C005"],
+    "trajectory_refs": [
+      "T001",
+      "T002",
+      "T003",
+      "T004",
+      "T005",
+      "T006",
+      "T007",
+      "T008",
+      "T009",
+      "T010",
+      "T011",
+      "T012",
+      "T013",
+      "T014",
+      "T015",
+      "T016",
+      "T017",
+      "T018",
+      "T019"
+    ],
+    "preserved_opportunity_refs": [
+      "O001",
+      "O002",
+      "O003",
+      "O004",
+      "O005",
+      "O006",
+      "O007",
+      "O008",
+      "O009",
+      "O010",
+      "O011",
+      "O012",
+      "O013",
+      "O014"
+    ],
+    "forbidden_assumption_refs": [
+      "C001",
+      "C002",
+      "C003",
+      "C004",
+      "C005"
+    ],
     "audit_basis": "Bind every material canonical frontier reference required by the stored state into append-only event history so the frontier can be reconstructed without shadow state.",
     "status": {
       "frontier": "CANDIDATE",
       "restore": "UNVERIFIED",
       "publication": "PUBLISHED_TO_REPO_BRANCH",
       "authenticity": "SELF_INTEGRITY_ONLY"
-    }
+    },
+    "canonicalization_policy": "protocol/CANONICALIZATION_v0.3.1.json",
+    "projection_policy": "protocol/PROJECTION_POLICY_v0.3.1.json",
+    "semantic_equivalence_profile": "protocol/SEMANTIC_EQUIVALENCE_PROFILE_v0.3.1.json",
+    "manifest_policy": "protocol/FRONTIER_MANIFEST_POLICY_v0.3.1.json"
   }
 }
