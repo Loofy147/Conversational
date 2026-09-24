@@ -1,0 +1,14 @@
+{
+  "schema": "conversation-frontier-storage-v0.3",
+  "canonical_store": "git_repository",
+  "immutable_revision": true,
+  "publication": {
+    "phase_1": "write revision artifacts",
+    "phase_2": "run independent verifier",
+    "phase_3": "advance HEAD against expected parent revision",
+    "conflict": "BLOCK",
+    "partial_publication": "NON_ACTIVE"
+  },
+  "library": {"role": "transport_or_auxiliary_retrieval", "authority": false},
+  "crash_model": {"partial_write": "NON_ACTIVE", "orphan_revision": "retained_for_diagnosis", "head_update": "final_publication_transition"}
+}
