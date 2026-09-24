@@ -1,0 +1,26 @@
+{
+  "schema": "conversation-frontier-manifest-v0.3",
+  "conversation_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc",
+  "frontier_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier",
+  "revision": 4,
+  "git_object_format": "sha1",
+  "identity_scope": "repository-native-content-identity",
+  "artifacts": [
+    {"path":"conversations/activation-001/revisions/0004/FRONTIER_EVENT.json","git_blob_sha":"67ce74a9d7b98cbcd719c3c74f4ea39c6d31ca7d"},
+    {"path":"conversations/activation-001/revisions/0004/FRONTIER_STATE.json","git_blob_sha":"6a8a98f2dc85674f29b673292371154b6a5161ad"},
+    {"path":"conversations/activation-001/revisions/0004/REDUCTION_SPEC.json","git_blob_sha":"4b41a68bb22b7757a33aff9cd372cf43fb0336d8"},
+    {"path":"conversations/activation-001/revisions/0004/PROJECTION.md","git_blob_sha":"6536011742410659f52f762de19991e44224070a"},
+    {"path":"conversations/activation-001/revisions/0004/RESTORE_RESULT.json","git_blob_sha":"dd265e8fb9410ae232e0761ed6079120e3b0d613"},
+    {"path":"conversations/activation-001/revisions/0004/INTEGRITY.json","git_blob_sha":"bb37d485fa4d699aabe5d756027965429786cfa3"},
+    {"path":"lineage/FRONTIER_OBJECTS_v0.3.json","git_blob_sha":"653c05d1544f5b2cd1079426b79988a22dee946f"},
+    {"path":"lineage/LINEAGE_REGISTER_v0.3.json","git_blob_sha":"bbf9987072d19e24e0e8e18855b05b1e21a6316b"},
+    {"path":"lineage/SOURCE_REGISTRY_v0.3.json","git_blob_sha":"bf711337aa98028c6f68f3a9cdd483f6cbf224be"},
+    {"path":"protocol/PROJECTION_POLICY_v0.3.json","git_blob_sha":"a9c17d08c52e14679a74274b43fd3a8d62d8e4b6"},
+    {"path":"protocol/CANONICALIZATION_v0.3.json","git_blob_sha":"094b3334d423d4604860068f6c8e2097bda119ef"},
+    {"path":"protocol/RESTORE_POLICY_v0.3.json","git_blob_sha":"f392b97b4067731430d70f42ccce366387d3c18b"},
+    {"path":"protocol/STORAGE_CONTRACT_v0.3.json","git_blob_sha":"7d5b14d73a4a635bea477a9ba128b8cf112f819c"},
+    {"path":"protocol/DISCOVERY_INDEX_SPEC_v0.3.json","git_blob_sha":"29a12539148eff75270d576c45e110e2fc6844e2"}
+  ],
+  "exclusions": ["conversations/activation-001/HEAD.json","conversations/activation-001/revisions/0004/MANIFEST.json"],
+  "authenticity": "SELF_INTEGRITY_ONLY"
+}
