@@ -1,12 +1,13 @@
 {
   "schema": "conversation-frontier-event-v0.3",
   "event_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier:event:0001",
+  "conversation_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc",
   "frontier_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier",
   "revision": 1,
   "parent_revision": null,
   "previous_event_digest": null,
   "event_type": "FRONTIER_CREATED",
-  "event_digest": "a2eab34cda9e94679a558f04f2034386830bdeb4d59a2fc8970876a0e9167a4c",
+  "event_digest": "ff41f89cb4139fb618e19cb1d4837e5db8ffbdb6671444a5e4fb91b9b855c9bf",
   "payload": {
     "origin": "Conversation work can lose its reasoning frontier when continuation depends on transient context.",
     "objective": "Preserve the work frontier across conversation boundaries without making reconstructed context canonical truth.",
