@@ -1,12 +1,13 @@
 {
   "schema": "conversation-frontier-event-v0.3",
   "event_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier:event:0003",
+  "conversation_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc",
   "frontier_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier",
   "revision": 3,
   "parent_revision": 2,
-  "previous_event_digest": "7a5c85254cd936ac7048c7f852eb2830c120da281b5eeff79f9796d40cd492d5",
+  "previous_event_digest": "5b39cf35865b4a957c56d7e996f79c95bf9785462b94bba4fd4c494fc0509295",
   "event_type": "FRONTIER_HARDENED",
-  "event_digest": "22cb39fe063cdb5ea6523cddb528f58b4cb074c9fd4e29ca642b8a2801acf5ac",
+  "event_digest": "212f0aab9d6666cdaaff1c4e6f45370463ca99bc198d59e5165d0992e2b9c21f",
   "payload": {
     "add_open_question_ids": ["Q009","Q010","Q011","Q012","Q013"],
     "storage_contract": "protocol/STORAGE_CONTRACT_v0.3.json",
