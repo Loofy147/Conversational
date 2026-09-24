@@ -125,6 +125,10 @@ def reduce_events(root: Path, head_revision: int) -> dict[str, Any]:
                 state["semantic_equivalence_profile"] = payload["semantic_equivalence_profile"]
             if "implementation_refs" in payload:
                 state["implementation_refs"] = list(payload["implementation_refs"])
+            if "normative_contract_refs" in payload:
+                state["normative_contract_refs"] = list(payload["normative_contract_refs"])
+            if "discovery_refs" in payload:
+                state["discovery_refs"] = list(payload["discovery_refs"])
             state["status"].update(payload.get("status", {}))
 
         previous_event_digest = event["event_digest"]
@@ -339,6 +343,8 @@ def verify_repo(root: Path) -> dict[str, Any]:
         "canonicalization_policy",
         "revision_manifest",
         "implementation_refs",
+        "normative_contract_refs",
+        "discovery_refs",
         "status",
     ):
         assert stored[field] == reduced[field], field
@@ -417,6 +423,8 @@ def verify_repo(root: Path) -> dict[str, Any]:
         manifest_policy["required_artifacts"]["revision"]
         + manifest_policy["required_artifacts"]["dependency"]
         + manifest_policy["required_artifacts"]["implementation"]
+        + manifest_policy["required_artifacts"]["normative_contracts"]
+        + manifest_policy["required_artifacts"]["discovery"]
     )
     assert set(manifest_paths) == required_paths
     assert len(manifest_paths) == len(required_paths)
@@ -425,7 +433,7 @@ def verify_repo(root: Path) -> dict[str, Any]:
         assert actual == expected, (relative, actual, expected)
 
     entrypoint = (root / "CONVERSATION_ENTRYPOINT.md").read_text(encoding="utf-8")
-    assert "HEAD revision: 5" in entrypoint
+    assert "resolve the revision named by HEAD" in entrypoint
     assert "CONTEXT_ONLY" in entrypoint
     assert "external action authorization" in entrypoint
 
