@@ -115,6 +115,14 @@ def reduce_events(root: Path, head_revision: int) -> dict[str, Any]:
                 state["preserved_opportunity_refs"] = list(payload["preserved_opportunity_refs"])
             if "forbidden_assumption_refs" in payload:
                 state["forbidden_assumption_refs"] = list(payload["forbidden_assumption_refs"])
+            if "manifest_policy" in payload:
+                state["manifest_policy"] = payload["manifest_policy"]
+            if "canonicalization_policy" in payload:
+                state["canonicalization_policy"] = payload["canonicalization_policy"]
+            if "projection_policy" in payload:
+                state["projection_policy"] = payload["projection_policy"]
+            if "semantic_equivalence_profile" in payload:
+                state["semantic_equivalence_profile"] = payload["semantic_equivalence_profile"]
             state["status"].update(payload.get("status", {}))
 
         previous_event_digest = event["event_digest"]
@@ -295,10 +303,10 @@ def verify_repo(root: Path) -> dict[str, Any]:
     objects = load_json(root, "lineage/FRONTIER_OBJECTS_v0.3.json")
     lineage = load_json(root, "lineage/LINEAGE_REGISTER_v0.3.json")
     manifest = load_json(root, "conversations/activation-001/revisions/0005/MANIFEST.json")
-    policy = load_json(root, "protocol/PROJECTION_POLICY_v0.3.json")
+    policy = load_json(root, "protocol/PROJECTION_POLICY_v0.3.1.json")
     semantic_profile = load_json(root, "protocol/SEMANTIC_EQUIVALENCE_PROFILE_v0.3.1.json")
     manifest_policy = load_json(root, "protocol/FRONTIER_MANIFEST_POLICY_v0.3.1.json")
-    canonicalization = load_json(root, "protocol/CANONICALIZATION_v0.3.json")
+    canonicalization = load_json(root, "protocol/CANONICALIZATION_v0.3.1.json")
     restore = load_json(root, "conversations/activation-001/revisions/0005/RESTORE_RESULT.json")
     registry = load_json(root, "registry/CONVERSATIONS.json")
 
@@ -324,6 +332,9 @@ def verify_repo(root: Path) -> dict[str, Any]:
         "lineage_register",
         "object_registry",
         "projection_policy",
+        "semantic_equivalence_profile",
+        "manifest_policy",
+        "canonicalization_policy",
         "revision_manifest",
         "status",
     ):
@@ -375,10 +386,13 @@ def verify_repo(root: Path) -> dict[str, Any]:
     stored_projection = (root / "conversations/activation-001/revisions/0005/PROJECTION.md").read_text(encoding="utf-8")
     assert generated_projection == stored_projection
 
-    assert policy["renderer"] == "deterministic-markdown-v0.3"
+    assert policy["renderer"] == "frontier.core.render_projection"
     assert policy["projection_authority"] == "DERIVED_ONLY"
     assert semantic_profile["schema"] == "conversation-frontier-semantic-equivalence-profile-v0.3.1"
     assert "current_question" in semantic_profile["semantic_fields"]
+    assert semantic_profile["invariance"] == "Changing only excluded fields must not change semantic_digest."
+    assert canonicalization["schema"] == "conversation-frontier-canonicalization-v0.3.1"
+    assert canonicalization["semantic_resolution"]["resolve_references"] is True
     assert canonicalization["serialization"]["unicode_normalization"] == "NFC"
     assert canonicalization["serialization"]["non_finite_numbers"] == "REJECT"
 
