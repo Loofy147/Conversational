@@ -1,0 +1,19 @@
+{
+  "schema": "conversation-frontier-event-v0.3",
+  "event_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier:event:0002",
+  "frontier_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier",
+  "revision": 2,
+  "parent_revision": 1,
+  "previous_event_digest": "4d14021ceb423a68244abb4ce92391e5a1cbb73dff43b289f864686a38826568",
+  "event_type": "FRONTIER_AMENDED",
+  "event_digest": "bb426f2598ecab8ba710453b263346bcc716253ccec6be51be70d7794955aaa1",
+  "payload": {
+    "workstream_ids": ["W001","W002","W003"],
+    "trajectory_register": "lineage/LINEAGE_REGISTER_v0.3.json",
+    "source_registry": "lineage/SOURCE_REGISTRY_v0.3.json",
+    "opportunity_register": "lineage/LINEAGE_REGISTER_v0.3.json",
+    "add_open_question_ids": ["Q006","Q007","Q008"],
+    "audit_basis": "The earlier frontier compressed multi-layer lineage and did not preserve workstreams or higher-value opportunities explicitly.",
+    "status": {"publication":"PUBLISH_PENDING","authenticity":"SELF_INTEGRITY_ONLY"}
+  }
+}
