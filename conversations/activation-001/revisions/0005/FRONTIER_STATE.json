@@ -7,20 +7,96 @@
   "revision": 5,
   "origin": "Conversation work can lose its reasoning frontier when continuation depends on transient context.",
   "objective": "Preserve the work frontier across conversation boundaries without making reconstructed context canonical truth.",
-  "workstreams": ["W001","W002","W003"],
-  "trajectory_refs": ["T001","T002","T003","T004","T005","T006","T007","T008","T009","T010","T011","T012","T013","T014","T015","T016","T017","T018","T019"],
-  "preserved_opportunity_refs": ["O001","O002","O003","O004","O005","O006","O007","O008","O009","O010","O011","O012","O013","O014"],
-  "open_question_refs": ["Q001","Q002","Q003","Q004","Q005","Q006","Q007","Q008","Q009","Q010","Q011","Q012","Q013"],
-  "decision_refs": ["D001","D002","D003","D004","D005"],
-  "rejected_path_refs": ["R001","R002","R003","R004"],
-  "constraint_refs": ["C001","C002","C003","C004","C005"],
+  "workstreams": [
+    "W001",
+    "W002",
+    "W003"
+  ],
+  "trajectory_refs": [
+    "T001",
+    "T002",
+    "T003",
+    "T004",
+    "T005",
+    "T006",
+    "T007",
+    "T008",
+    "T009",
+    "T010",
+    "T011",
+    "T012",
+    "T013",
+    "T014",
+    "T015",
+    "T016",
+    "T017",
+    "T018",
+    "T019"
+  ],
+  "preserved_opportunity_refs": [
+    "O001",
+    "O002",
+    "O003",
+    "O004",
+    "O005",
+    "O006",
+    "O007",
+    "O008",
+    "O009",
+    "O010",
+    "O011",
+    "O012",
+    "O013",
+    "O014"
+  ],
+  "open_question_refs": [
+    "Q001",
+    "Q002",
+    "Q003",
+    "Q004",
+    "Q005",
+    "Q006",
+    "Q007",
+    "Q008",
+    "Q009",
+    "Q010",
+    "Q011",
+    "Q012",
+    "Q013"
+  ],
+  "decision_refs": [
+    "D001",
+    "D002",
+    "D003",
+    "D004",
+    "D005"
+  ],
+  "rejected_path_refs": [
+    "R001",
+    "R002",
+    "R003",
+    "R004"
+  ],
+  "constraint_refs": [
+    "C001",
+    "C002",
+    "C003",
+    "C004",
+    "C005"
+  ],
   "current_question": "Can this activation preserve and restore the work frontier across a future conversation without treating reconstructed context as canonical truth?",
   "next_action_ref": "A001",
-  "forbidden_assumption_refs": ["C001","C002","C003","C004","C005"],
+  "forbidden_assumption_refs": [
+    "C001",
+    "C002",
+    "C003",
+    "C004",
+    "C005"
+  ],
   "source_registry": "lineage/SOURCE_REGISTRY_v0.3.json",
   "lineage_register": "lineage/LINEAGE_REGISTER_v0.3.json",
   "object_registry": "lineage/FRONTIER_OBJECTS_v0.3.json",
-  "projection_policy": "protocol/PROJECTION_POLICY_v0.3.json",
+  "projection_policy": "protocol/PROJECTION_POLICY_v0.3.1.json",
   "revision_manifest": "conversations/activation-001/revisions/0005/MANIFEST.json",
   "status": {
     "activation": "ACTIVE",
@@ -28,5 +104,8 @@
     "restore": "UNVERIFIED",
     "publication": "PUBLISHED_TO_REPO_BRANCH",
     "authenticity": "SELF_INTEGRITY_ONLY"
-  }
+  },
+  "canonicalization_policy": "protocol/CANONICALIZATION_v0.3.1.json",
+  "semantic_equivalence_profile": "protocol/SEMANTIC_EQUIVALENCE_PROFILE_v0.3.1.json",
+  "manifest_policy": "protocol/FRONTIER_MANIFEST_POLICY_v0.3.1.json"
 }
