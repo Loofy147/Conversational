@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 ACT = ROOT / 'conversations' / 'activation-001'
@@ -67,18 +68,21 @@ def reduce_events(events):
     return state
 
 def main() -> None:
-    events = [load(REV / f'{i:04d}' / 'FRONTIER_EVENT.json') for i in range(1, 4)]
+    head = load(ACT / 'HEAD.json')
+    assert head['revision'] == 4
+    events = [load(REV / f'{i:04d}' / 'FRONTIER_EVENT.json') for i in range(1, head['revision'] + 1)]
     reduced = reduce_events(events)
-    stored = load(REV / '0003' / 'FRONTIER_STATE.json')
+    stored = load(REV / '0004' / 'FRONTIER_STATE.json')
     lineage = load(ROOT / 'lineage' / 'LINEAGE_REGISTER_v0.3.json')
+    objects = load(ROOT / 'lineage' / 'FRONTIER_OBJECTS_v0.3.json')
+    manifest = load(REV / '0004' / 'MANIFEST.json')
     sources = load(ROOT / 'lineage' / 'SOURCE_REGISTRY_v0.3.json')
     registry = load(ROOT / 'registry' / 'CONVERSATIONS.json')
-    head = load(ACT / 'HEAD.json')
-
-    assert head['revision'] == 3
+    assert head['revision'] == 4
     assert head['frontier_id'] == stored['identity']['frontier_id']
     assert head['conversation_id'] == stored['identity']['conversation_id']
-    assert head['revision_path'] == 'conversations/activation-001/revisions/0003'
+    assert head['revision_path'] == 'conversations/activation-001/revisions/0004'
+    assert head['revision_manifest'] == 'conversations/activation-001/revisions/0004/MANIFEST.json'
 
     assert stored['revision'] == 3
     assert stored['identity'] == reduced['identity']
@@ -89,6 +93,11 @@ def main() -> None:
     assert stored['open_question_refs'] == reduced['open_question_refs']
     assert stored['next_action']['action_id'] == reduced['next_action_id']
     assert stored['status'] == reduced['status']
+    assert set(stored['decision_refs']) == {x['id'] for x in objects['decisions']}
+    assert set(stored['rejected_path_refs']) == {x['id'] for x in objects['rejected_paths']}
+    assert set(stored['constraint_refs']) == {x['id'] for x in objects['constraints']}
+    assert set(stored['workstreams']) == {x['id'] for x in objects['workstreams']}
+    assert stored['next_action_ref'] in {x['id'] for x in objects['actions']}
     assert stored['source_registry'] == reduced['source_registry']
 
     trajectory_ids = {x['id'] for x in lineage['trajectory']}
@@ -115,12 +124,16 @@ def main() -> None:
     assert 'O001–O014' in projection
     assert 'Q001–Q013' in projection
 
-    restore = load(REV / '0003' / 'RESTORE_RESULT.json')
+    restore = load(REV / '0004' / 'RESTORE_RESULT.json')
     assert restore['continuation_permission'] == 'CONTEXT_ONLY'
     assert restore['action_authorization'] == 'SEPARATE_GATE_REQUIRED'
     assert restore['checks']['event_log_reduction'] == 'PASS'
     assert restore['checks']['semantic_projection'] == 'PASS'
     assert restore['checks']['external_boundary'] == 'NOT_RUN'
+    manifest_paths = {a['path']: a['git_blob_sha'] for a in manifest['artifacts']}
+    for path, expected_sha in manifest_paths.items():
+        actual_sha = subprocess.check_output(['git', 'rev-parse', f'HEAD:{path}'], text=True).strip()
+        assert actual_sha == expected_sha, (path, actual_sha, expected_sha)
 
     print('frontier-v0.3 verifier: PASS')
 
