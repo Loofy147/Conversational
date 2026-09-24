@@ -114,5 +114,13 @@
     "frontier/core.py",
     "tests/mutation_frontier_v0_3.py",
     "tests/verify_frontier_v0_3.py"
+  ],
+  "normative_contract_refs": [
+    "protocol/CONVERSATION_FRONTIER_PROTOCOL_v0.3.md",
+    "protocol/PROVENANCE_TRUST_BOUNDARY_v0.3.md"
+  ],
+  "discovery_refs": [
+    "CONVERSATION_ENTRYPOINT.md",
+    "registry/CONVERSATIONS.json"
   ]
 }
