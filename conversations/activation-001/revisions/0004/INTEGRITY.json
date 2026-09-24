@@ -1,0 +1,7 @@
+{
+  "schema":"conversation-frontier-integrity-v0.3",
+  "algorithm":"repository-native-git-object-identity",
+  "scope":"revision artifacts excluding HEAD.json and INTEGRITY.json",
+  "rule":"For each listed artifact, expected Git blob identity is recorded in MANIFEST.json. Git repository history supplies the repository-native content identity. This is not an external authenticity proof.",
+  "authenticity":"SELF_INTEGRITY_ONLY"
+}
