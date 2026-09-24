@@ -14,11 +14,11 @@ Start with CONVERSATION_ENTRYPOINT.md. It defines the exact discovery and restor
 
 ## Current protocol
 
-- Frontier schema: v0.2.2
-- Activation fixture: 001
+- Frontier protocol: v0.3
+- Activation fixture: 001, hardened candidate revision 4
 - Current frontier status: CANDIDATE
 - Restore status: UNVERIFIED
-- Publication status: PUBLISH_PENDING
+- Publication status: PUBLISHED_TO_REPO_BRANCH
 - Authenticity status: SELF_INTEGRITY_ONLY
 
 ## Core model
