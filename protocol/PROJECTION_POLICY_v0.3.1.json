@@ -1,0 +1,26 @@
+{
+  "schema":"conversation-frontier-projection-policy-v0.3.1",
+  "renderer":"frontier.core.render_projection",
+  "source":"conversations/activation-001/revisions/0005/FRONTIER_STATE.json",
+  "required_sections":[
+    "Purpose",
+    "Current question",
+    "Workstreams",
+    "Preserved lineage",
+    "Preserved opportunities",
+    "Open questions",
+    "Decisions",
+    "Rejected paths",
+    "Next action",
+    "Constraints",
+    "Authorization"
+  ],
+  "rules":{
+    "ordering":"state reference order",
+    "renderer_is_deterministic":true,
+    "projection_authority":"DERIVED_ONLY",
+    "no_new_semantic_state":true,
+    "newline":"LF",
+    "trailing_newline":true
+  }
+}
