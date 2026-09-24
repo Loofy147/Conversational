@@ -31,7 +31,7 @@ def reduce_events(events):
             assert event['event_type'] == 'FRONTIER_CREATED'
             p = event['payload']
             state = {
-                'identity': p['identity'],
+                'identity': {'conversation_id': event['conversation_id'], 'frontier_id': event['frontier_id']},
                 'origin': p['origin'],
                 'objective': p['objective'],
                 'current_question': p['current_question'],
