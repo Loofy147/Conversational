@@ -1,0 +1,21 @@
+{
+  "schema": "conversation-frontier-event-v0.3",
+  "event_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier:event:0001",
+  "frontier_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier",
+  "revision": 1,
+  "parent_revision": null,
+  "previous_event_digest": null,
+  "event_type": "FRONTIER_CREATED",
+  "event_digest": "4d14021ceb423a68244abb4ce92391e5a1cbb73dff43b289f864686a38826568",
+  "payload": {
+    "origin": "Conversation work can lose its reasoning frontier when continuation depends on transient context.",
+    "objective": "Preserve the work frontier across conversation boundaries without making reconstructed context canonical truth.",
+    "current_question": "Can this activation preserve and restore the work frontier across a future conversation without treating reconstructed context as canonical truth?",
+    "decision_ids": ["D001","D002","D003","D004","D005"],
+    "rejected_path_ids": ["R001","R002","R003","R004"],
+    "open_question_ids": ["Q001","Q002","Q003","Q004","Q005"],
+    "next_action_id": "A001",
+    "constraint_ids": ["C001","C002","C003","C004","C005"],
+    "status": {"activation":"ACTIVE","frontier":"CANDIDATE","restore":"UNVERIFIED","publication":"PUBLISH_PENDING","authenticity":"SELF_INTEGRITY_ONLY"}
+  }
+}
