@@ -1,0 +1,21 @@
+{
+  "schema":"conversation-frontier-restore-result-v0.3",
+  "status":"CANDIDATE_UNDER_LOCAL_REPLAY",
+  "activation":"001",
+  "revision":5,
+  "checks":{
+    "revision_chain":"PASS",
+    "event_log_reduction":"PASS",
+    "semantic_equivalence":"PENDING_HARDENED_VERIFIER",
+    "projection_reproduction":"PENDING_HARDENED_VERIFIER",
+    "object_reference_closure":"PASS",
+    "schema_resolution":"PASS",
+    "policy_resolution":"PASS",
+    "source_binding_resolution":"PASS_WITH_HISTORICAL_SOURCES",
+    "discovery":"PASS_WITH_REPO_HEAD",
+    "external_boundary":"NOT_RUN"
+  },
+  "continuation_permission":"CONTEXT_ONLY",
+  "action_authorization":"SEPARATE_GATE_REQUIRED",
+  "next_test":"Fresh conversation restore without prior transcript"
+}

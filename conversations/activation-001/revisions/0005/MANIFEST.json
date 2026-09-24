@@ -1,0 +1,116 @@
+{
+  "schema": "conversation-frontier-manifest-v0.3.1",
+  "conversation_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc",
+  "frontier_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier",
+  "revision": 5,
+  "git_object_format": "sha1",
+  "identity_scope": "repository-native-content-identity",
+  "artifacts": [
+    {
+      "path": "conversations/activation-001/revisions/0005/FRONTIER_EVENT.json",
+      "git_blob_sha": "c2094ac90d0aedc139fa729264a4f7a6752ec1e5"
+    },
+    {
+      "path": "conversations/activation-001/revisions/0005/FRONTIER_STATE.json",
+      "git_blob_sha": "369cdaec4376d2ce83a37909a4159717e73f68c4"
+    },
+    {
+      "path": "conversations/activation-001/revisions/0005/REDUCTION_SPEC.json",
+      "git_blob_sha": "c95598b80cbbaaf665eca531e67b3133d7634e3c"
+    },
+    {
+      "path": "conversations/activation-001/revisions/0005/PROJECTION.md",
+      "git_blob_sha": "c8e6acb0a504c1fea0f372c7ad8053cdab6373a4"
+    },
+    {
+      "path": "conversations/activation-001/revisions/0005/RESTORE_RESULT.json",
+      "git_blob_sha": "a8bc9b9379c9e6251552195bb581261514c8a17a"
+    },
+    {
+      "path": "conversations/activation-001/revisions/0005/INTEGRITY.json",
+      "git_blob_sha": "5e43fb02360d78b3cc07e08597af0931579204c6"
+    },
+    {
+      "path": "lineage/FRONTIER_OBJECTS_v0.3.json",
+      "git_blob_sha": "653c05d1544f5b2cd1079426b79988a22dee946f"
+    },
+    {
+      "path": "lineage/LINEAGE_REGISTER_v0.3.json",
+      "git_blob_sha": "bbf9987072d19e24e0e8e18855b05b1e21a6316b"
+    },
+    {
+      "path": "lineage/SOURCE_REGISTRY_v0.3.json",
+      "git_blob_sha": "bf711337aa98028c6f68f3a9cdd483f6cbf224be"
+    },
+    {
+      "path": "protocol/PROJECTION_POLICY_v0.3.1.json",
+      "git_blob_sha": "381d6bf62f9d41976c690becb39aa692356b7490"
+    },
+    {
+      "path": "protocol/CANONICALIZATION_v0.3.1.json",
+      "git_blob_sha": "5e3a2a5f8ce4c744864df56c2b1ec2929f061716"
+    },
+    {
+      "path": "protocol/RESTORE_POLICY_v0.3.json",
+      "git_blob_sha": "f392b97b4067731430d70f42ccce366387d3c18b"
+    },
+    {
+      "path": "protocol/STORAGE_CONTRACT_v0.3.json",
+      "git_blob_sha": "7d5b14d73a4a635bea477a9ba128b8cf112f819c"
+    },
+    {
+      "path": "protocol/DISCOVERY_INDEX_SPEC_v0.3.json",
+      "git_blob_sha": "29a12539148eff75270d576c45e110e2fc6844e2"
+    },
+    {
+      "path": "protocol/SEMANTIC_EQUIVALENCE_PROFILE_v0.3.1.json",
+      "git_blob_sha": "2c52071fd93b458d9c4cc271c09ce49537273c0b"
+    },
+    {
+      "path": "protocol/FRONTIER_MANIFEST_POLICY_v0.3.1.json",
+      "git_blob_sha": "f4317710d45c9b24a3ed026fcd50bcd0eb0e39a1"
+    },
+    {
+      "path": ".github/workflows/verify-frontier.yml",
+      "git_blob_sha": "4e504e877ba94e32f8161343574aa3063fe03aeb"
+    },
+    {
+      "path": "frontier/__init__.py",
+      "git_blob_sha": "0c82e0a44e0df669b3a51c43dec38d38faec6349"
+    },
+    {
+      "path": "frontier/core.py",
+      "git_blob_sha": "5e90cee49f134523de760b79f93026d85bcd8bb9"
+    },
+    {
+      "path": "tests/mutation_frontier_v0_3.py",
+      "git_blob_sha": "e1d2c8e57f9d5abd80e5477194198908124b8054"
+    },
+    {
+      "path": "tests/verify_frontier_v0_3.py",
+      "git_blob_sha": "86b60084036b6d9fc25c7f6a74ee4e9a84a41736"
+    },
+    {
+      "path": "protocol/CONVERSATION_FRONTIER_PROTOCOL_v0.3.md",
+      "git_blob_sha": "e9858f8d8556d4d0320a6baeefee68d8fd1463c1"
+    },
+    {
+      "path": "protocol/PROVENANCE_TRUST_BOUNDARY_v0.3.md",
+      "git_blob_sha": "9a73e780cf1e001c1ab43f95e4d27d7cc2feacc5"
+    },
+    {
+      "path": "CONVERSATION_ENTRYPOINT.md",
+      "git_blob_sha": "b9c0df5d327d0396a4e1b7e420e89be6e4b63c11"
+    },
+    {
+      "path": "registry/CONVERSATIONS.json",
+      "git_blob_sha": "968daae65c73000133088c6cb6081fa4cfd91a3f"
+    }
+  ],
+  "exclusions": [
+    "conversations/activation-001/HEAD.json",
+    "conversations/activation-001/revisions/0005/MANIFEST.json",
+    "README.md"
+  ],
+  "authenticity": "SELF_INTEGRITY_ONLY"
+}

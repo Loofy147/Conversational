@@ -1,0 +1,23 @@
+{
+  "schema": "conversation-frontier-reduction-v0.3",
+  "algorithm": "Apply events in increasing revision order after verifying immutable conversation_id/frontier_id, parent_revision, previous_event_digest, and event_digest. Revision 5 binds every material reference and the active canonicalization/projection/manifest policies.",
+  "operations": {
+    "FRONTIER_CREATED": "Initialize identity, origin, objective, current question, base decision/path/question/constraint refs, next action ref, and status.",
+    "FRONTIER_AMENDED": "Add workstream and lineage/source registry references and additional open questions.",
+    "FRONTIER_HARDENED": "Add storage, restore, canonicalization, discovery, and status bindings.",
+    "FRONTIER_HARDENED_OBJECTS": "Add object registry, revision manifest, projection policy, and status bindings.",
+    "FRONTIER_BINDING_COMPLETED": "Add trajectory refs, preserved opportunity refs, forbidden assumption refs, implementation refs, normative contract refs, discovery refs, active policy refs, and status bindings."
+  },
+  "reject": [
+    "missing_parent",
+    "revision_gap",
+    "event_identity_mismatch",
+    "event_digest_mismatch",
+    "previous_event_digest_mismatch",
+    "unknown_event_type",
+    "illegal_status_transition",
+    "dangling_reference"
+  ],
+  "authority": "EVENT_LOG_REDUCTION",
+  "publication_boundary": "Revision 5 is the first revision where every material field in FRONTIER_STATE is reconstructible from the event sequence without shadow semantic state."
+}

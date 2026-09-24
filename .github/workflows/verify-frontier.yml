@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'protocol/**'
+      - 'frontier/**'
       - 'conversations/**'
       - 'lineage/**'
       - 'registry/**'
@@ -12,6 +13,7 @@ on:
   pull_request:
     paths:
       - 'protocol/**'
+      - 'frontier/**'
       - 'conversations/**'
       - 'lineage/**'
       - 'registry/**'
@@ -26,5 +28,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+      - name: Compile
+        run: python -m compileall -q frontier tests
       - name: Verify frontier
         run: python tests/verify_frontier_v0_3.py
+      - name: Mutation campaign
+        run: python tests/mutation_frontier_v0_3.py
