@@ -7,7 +7,7 @@
   "parent_revision": 4,
   "previous_event_digest": "212f0aab9d6666cdaaff1c4e6f45370463ca99bc198d59e5165d0992e2b9c21f",
   "event_type": "FRONTIER_BINDING_COMPLETED",
-  "event_digest": "0f4ab8bacd486373a26822a221a6af214671cc7161696d3dadf2cbd3b294bf08",
+  "event_digest": "20900e58581fe5813ff6f1138449f1b6851a30d370e091f29bceefa75a1503de",
   "payload": {
     "trajectory_refs": [
       "T001",
@@ -63,6 +63,13 @@
     "canonicalization_policy": "protocol/CANONICALIZATION_v0.3.1.json",
     "projection_policy": "protocol/PROJECTION_POLICY_v0.3.1.json",
     "semantic_equivalence_profile": "protocol/SEMANTIC_EQUIVALENCE_PROFILE_v0.3.1.json",
-    "manifest_policy": "protocol/FRONTIER_MANIFEST_POLICY_v0.3.1.json"
+    "manifest_policy": "protocol/FRONTIER_MANIFEST_POLICY_v0.3.1.json",
+    "implementation_refs": [
+      ".github/workflows/verify-frontier.yml",
+      "frontier/__init__.py",
+      "frontier/core.py",
+      "tests/mutation_frontier_v0_3.py",
+      "tests/verify_frontier_v0_3.py"
+    ]
   }
 }
