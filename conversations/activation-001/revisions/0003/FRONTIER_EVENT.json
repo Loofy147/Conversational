@@ -1,0 +1,19 @@
+{
+  "schema": "conversation-frontier-event-v0.3",
+  "event_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier:event:0003",
+  "frontier_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier",
+  "revision": 3,
+  "parent_revision": 2,
+  "previous_event_digest": "bb426f2598ecab8ba710453b263346bcc716253ccec6be51be70d7794955aaa1",
+  "event_type": "FRONTIER_HARDENED",
+  "event_digest": "64b2168db64c55b31ecfd7f0248c0065a6ea4744f93de33198f3c7b35e43db04",
+  "payload": {
+    "add_open_question_ids": ["Q009","Q010","Q011","Q012","Q013"],
+    "storage_contract": "protocol/STORAGE_CONTRACT_v0.3.json",
+    "restore_policy": "protocol/RESTORE_POLICY_v0.3.json",
+    "canonicalization_policy": "protocol/CANONICALIZATION_v0.3.json",
+    "discovery_policy": "protocol/DISCOVERY_INDEX_SPEC_v0.3.json",
+    "audit_basis": "Separate event history, canonical semantic state, discovery, publication, integrity, provenance, and authorization.",
+    "status": {"frontier":"CANDIDATE","restore":"UNVERIFIED","publication":"PUBLISHED_TO_REPO_BRANCH","authenticity":"SELF_INTEGRITY_ONLY"}
+  }
+}
