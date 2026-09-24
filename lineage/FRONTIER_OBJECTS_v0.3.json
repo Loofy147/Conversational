@@ -1,0 +1,100 @@
+{
+  "schema": "conversation-frontier-objects-v0.3",
+  "authority": "CANONICAL_FRONTIER_REFERENCE_OBJECTS",
+  "workstreams": [
+    {
+      "id": "W001",
+      "name": "Protocol correctness",
+      "status": "ACTIVE",
+      "objective": "Define and verify durable conversation continuity without transcript authority.",
+      "current_question": "What minimum canonical frontier semantics are required for lossless-enough continuation?"
+    },
+    {
+      "id": "W002",
+      "name": "Repository implementation",
+      "status": "ACTIVE",
+      "objective": "Make Conversational the executable source of truth with repository-native verification.",
+      "current_question": "Can the repository independently validate revision, lineage, projection, and discovery consistency?"
+    },
+    {
+      "id": "W003",
+      "name": "External-boundary restore",
+      "status": "OPEN",
+      "objective": "Validate a genuinely fresh conversation restore without transcript dependence.",
+      "current_question": "Does a new conversation reconstruct the same frontier from repository artifacts alone?"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D001",
+      "status": "SUPERSEDED",
+      "statement": "The initial activation used one Library folder per conversation.",
+      "superseded_by": "D005",
+      "reason": "Library proved useful as transport/retrieval, but repository-native canonical state is required."
+    },
+    {
+      "id": "D002",
+      "status": "ESTABLISHED",
+      "statement": "The Frontier is a projection/orchestration layer, not a second domain truth store."
+    },
+    {
+      "id": "D003",
+      "status": "ESTABLISHED",
+      "statement": "Canonical references, provenance, integrity state, explicit uncertainty, dependencies, and revalidation conditions are mandatory."
+    },
+    {
+      "id": "D004",
+      "status": "ESTABLISHED",
+      "statement": "Outputs created during an activation cannot be used as independent evidence that the protocol pre-existed that activation."
+    },
+    {
+      "id": "D005",
+      "status": "ESTABLISHED",
+      "statement": "Loofy147/Conversational is the canonical implementation source for the conversation-continuation protocol; Library copies are auxiliary transport/provenance surfaces."
+    }
+  ],
+  "rejected_paths": [
+    {
+      "id": "R001",
+      "status": "REJECTED",
+      "statement": "Use the conversation transcript as durable operating memory.",
+      "reason": "Transcript reconstruction is not deterministic, bounded, or provenance-safe."
+    },
+    {
+      "id": "R002",
+      "status": "REJECTED",
+      "statement": "Treat Library copies as the authority for the protocol.",
+      "reason": "Library is a retrieval/transport surface and can be partially published or independently modified."
+    },
+    {
+      "id": "R003",
+      "status": "REJECTED",
+      "statement": "Promote any reconstructed frontier directly to Active Frontier.",
+      "reason": "Restore and lifecycle verification are separate gates."
+    },
+    {
+      "id": "R004",
+      "status": "REJECTED",
+      "statement": "Treat successful context restoration as external action authorization.",
+      "reason": "Restoration, current-world validity, policy, and authority are separate state machines."
+    }
+  ],
+  "constraints": [
+    {"id":"C001","statement":"Missing references are not reconstructed from model memory."},
+    {"id":"C002","statement":"Historical world state is not current world truth."},
+    {"id":"C003","statement":"Integrity does not imply authenticity."},
+    {"id":"C004","statement":"Retrieval success does not imply authority."},
+    {"id":"C005","statement":"Restoration success does not imply external action authorization."}
+  ],
+  "actions": [
+    {
+      "id":"A001",
+      "status":"OPEN",
+      "purpose":"Discriminate true cross-conversation continuity from same-context reconstruction.",
+      "action":"Run the first genuine external-boundary restore from a fresh conversation.",
+      "expected_signal":"RESTORED_WITH_VERIFICATION",
+      "failure_condition":"Any required identity, integrity, schema, projection, dependency, or provenance gate fails.",
+      "rollback":"Do not advance HEAD; preserve the failure record."
+    }
+  ]
+}

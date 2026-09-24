@@ -8,13 +8,17 @@ This repository is the canonical source for the conversation-continuation protoc
 
 Library copies, conversation transcripts, generated projections, and cached material are transport/retrieval surfaces only. They MUST NOT silently become authority.
 
+## First restore entrypoint
+
+Start with CONVERSATION_ENTRYPOINT.md. It defines the exact discovery and restore order for a fresh conversation.
+
 ## Current protocol
 
-- Frontier schema: v0.2.2
-- Activation fixture: 001
+- Frontier protocol: v0.3
+- Activation fixture: 001, hardened candidate revision 4
 - Current frontier status: CANDIDATE
 - Restore status: UNVERIFIED
-- Publication status: PUBLISH_PENDING
+- Publication status: PUBLISHED_TO_REPO_BRANCH
 - Authenticity status: SELF_INTEGRITY_ONLY
 
 ## Core model

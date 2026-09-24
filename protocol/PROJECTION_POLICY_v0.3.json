@@ -1,0 +1,27 @@
+{
+  "schema": "conversation-frontier-projection-policy-v0.3",
+  "renderer": "deterministic-markdown-v0.3",
+  "source": "conversations/activation-001/revisions/0004/FRONTIER_STATE.json",
+  "required_sections": [
+    "Purpose",
+    "Current question",
+    "Workstreams",
+    "Preserved lineage",
+    "Preserved opportunities",
+    "Open questions",
+    "Decisions",
+    "Rejected paths",
+    "Next action",
+    "Constraints",
+    "Authorization"
+  ],
+  "render_rules": {
+    "ordering": "as declared by canonical state references",
+    "lists": "stable source order",
+    "escaping": "UTF-8 Markdown",
+    "newline": "LF",
+    "trailing_newline": true
+  },
+  "projection_authority": "DERIVED_ONLY",
+  "semantic_equivalence": "projection must not add semantic state absent from canonical state"
+}

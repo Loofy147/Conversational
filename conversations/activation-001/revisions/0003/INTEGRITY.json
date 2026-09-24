@@ -1,0 +1,9 @@
+{
+  "schema": "conversation-frontier-integrity-v0.3",
+  "algorithm": "SHA-256",
+  "scope": "revision artifacts excluding HEAD and this integrity record",
+  "preimage": "sorted UTF-8 LF-joined path=sha256 lines with no trailing LF",
+  "excluded": ["HEAD.json","INTEGRITY.json"],
+  "verify": "Recompute every listed artifact hash, then recompute the aggregate digest from the canonical preimage.",
+  "authenticity": "SELF_INTEGRITY_ONLY; external trust root remains OPEN"
+}

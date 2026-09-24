@@ -1,0 +1,13 @@
+{
+  "schema": "conversation-frontier-restore-policy-v0.3",
+  "identity": {"conversation_id": "immutable", "folder": "locator_only", "date": "metadata_only"},
+  "failure": {"required_reference": "BLOCK", "ambiguous_discovery": "BLOCK", "schema_mismatch": "BLOCK", "integrity_failure": "BLOCK", "provenance_gap": "REVALIDATION_REQUIRED"},
+  "states": {
+    "BLOCKED": "A required gate failed.",
+    "CANDIDATE": "Inspectable but not verified continuation.",
+    "VERIFIED": "Semantic, provenance, schema, integrity, and dependency restoration passed.",
+    "VERIFIED_REQUIRES_LIVE_REVALIDATION": "Context restored; live-dependent continuation still requires fresh world inspection."
+  },
+  "authorization": {"restore_grants_action": false, "external_action": "SEPARATE_GATE_REQUIRED"},
+  "authenticity": {"self_hash": "insufficient_for_trusted_authorship", "root": "OPEN"}
+}

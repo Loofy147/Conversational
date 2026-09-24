@@ -1,0 +1,11 @@
+{
+  "schema": "conversation-frontier-reduction-v0.3",
+  "algorithm": "Apply events in increasing revision order after verifying parent_revision and previous_event_digest.",
+  "operations": {
+    "FRONTIER_CREATED": "Initialize semantic root fields and base ids.",
+    "FRONTIER_AMENDED": "Union additive id lists; replace only fields explicitly marked replace; never mutate prior events.",
+    "FRONTIER_HARDENED": "Add remaining open ids and protocol-policy references; apply declared status transitions only."
+  },
+  "reject": ["missing_parent","revision_gap","event_digest_mismatch","previous_event_digest_mismatch","unknown_event_type","illegal_status_transition"],
+  "authority": "EVENT_LOG_REDUCTION"
+}

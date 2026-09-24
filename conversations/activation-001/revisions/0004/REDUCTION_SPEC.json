@@ -1,0 +1,12 @@
+{
+  "schema":"conversation-frontier-reduction-v0.3",
+  "algorithm":"Apply events in increasing revision order after verifying immutable identity, parent_revision, and previous_event_digest. The first three revisions are the pre-publication assembly history of Activation 001; Revision 4 is the first hardened candidate that binds object definitions and deterministic projection policy.",
+  "operations":{
+    "FRONTIER_CREATED":"Initialize root semantic fields and reference ids.",
+    "FRONTIER_AMENDED":"Add workstream and lineage register references and open question ids.",
+    "FRONTIER_HARDENED":"Add policy references and remaining open question ids.",
+    "FRONTIER_HARDENED_OBJECTS":"Bind canonical object registry, revision manifest, and projection policy."
+  },
+  "reject":["missing_parent","revision_gap","event_identity_mismatch","event_digest_mismatch","previous_event_digest_mismatch","unknown_event_type","illegal_status_transition","dangling_reference"],
+  "historical_note":"Revision 1-3 were mutable during pre-publication construction and are preserved as development history. After Revision 4 publication, frontier revisions are append-only and immutable."
+}

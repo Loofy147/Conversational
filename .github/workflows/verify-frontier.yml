@@ -1,0 +1,30 @@
+name: verify-frontier
+
+on:
+  push:
+    paths:
+      - 'protocol/**'
+      - 'conversations/**'
+      - 'lineage/**'
+      - 'registry/**'
+      - 'tests/**'
+      - '.github/workflows/verify-frontier.yml'
+  pull_request:
+    paths:
+      - 'protocol/**'
+      - 'conversations/**'
+      - 'lineage/**'
+      - 'registry/**'
+      - 'tests/**'
+      - '.github/workflows/verify-frontier.yml'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Verify frontier
+        run: python tests/verify_frontier_v0_3.py
