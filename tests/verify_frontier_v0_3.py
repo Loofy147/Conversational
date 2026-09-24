@@ -36,11 +36,11 @@ def reduce_events(events):
                 'origin': p['origin'],
                 'objective': p['objective'],
                 'current_question': p['current_question'],
-                'decisions': list(p['decision_ids']),
-                'rejected_paths': list(p['rejected_path_ids']),
+                'decision_refs': list(p['decision_ids']),
+                'rejected_path_refs': list(p['rejected_path_ids']),
                 'open_question_refs': list(p['open_question_ids']),
                 'next_action_id': p['next_action_id'],
-                'constraint_ids': list(p['constraint_ids']),
+                'constraint_refs': list(p['constraint_ids']),
                 'status': dict(p['status']),
             }
         else:
@@ -64,6 +64,12 @@ def reduce_events(events):
                 state['canonicalization_policy'] = p['canonicalization_policy']
             if 'discovery_policy' in p:
                 state['discovery_policy'] = p['discovery_policy']
+            if 'object_registry' in p:
+                state['object_registry'] = p['object_registry']
+            if 'revision_manifest' in p:
+                state['revision_manifest'] = p['revision_manifest']
+            if 'projection_policy' in p:
+                state['projection_policy'] = p['projection_policy']
         previous_digest = event['event_digest']
     return state
 
@@ -90,9 +96,15 @@ def main() -> None:
     assert stored['objective'] == reduced['objective']
     assert stored['current_question'] == reduced['current_question']
     assert stored['workstreams'] == reduced['workstreams']
+    assert stored['decision_refs'] == reduced['decision_refs']
+    assert stored['rejected_path_refs'] == reduced['rejected_path_refs']
+    assert stored['constraint_refs'] == reduced['constraint_refs']
     assert stored['open_question_refs'] == reduced['open_question_refs']
     assert stored['next_action']['action_id'] == reduced['next_action_id']
     assert stored['status'] == reduced['status']
+    assert stored['object_registry'] == reduced['object_registry']
+    assert stored['revision_manifest'] == reduced['revision_manifest']
+    assert stored['projection_policy'] == reduced['projection_policy']
     assert set(stored['decision_refs']) == {x['id'] for x in objects['decisions']}
     assert set(stored['rejected_path_refs']) == {x['id'] for x in objects['rejected_paths']}
     assert set(stored['constraint_refs']) == {x['id'] for x in objects['constraints']}
