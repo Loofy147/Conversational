@@ -123,6 +123,8 @@ def reduce_events(root: Path, head_revision: int) -> dict[str, Any]:
                 state["projection_policy"] = payload["projection_policy"]
             if "semantic_equivalence_profile" in payload:
                 state["semantic_equivalence_profile"] = payload["semantic_equivalence_profile"]
+            if "implementation_refs" in payload:
+                state["implementation_refs"] = list(payload["implementation_refs"])
             state["status"].update(payload.get("status", {}))
 
         previous_event_digest = event["event_digest"]
@@ -336,6 +338,7 @@ def verify_repo(root: Path) -> dict[str, Any]:
         "manifest_policy",
         "canonicalization_policy",
         "revision_manifest",
+        "implementation_refs",
         "status",
     ):
         assert stored[field] == reduced[field], field
@@ -410,7 +413,11 @@ def verify_repo(root: Path) -> dict[str, Any]:
     assert restore["checks"]["external_boundary"] == "NOT_RUN"
 
     manifest_paths = {item["path"]: item["git_blob_sha"] for item in manifest["artifacts"]}
-    required_paths = set(manifest_policy["required_artifacts"]["revision"] + manifest_policy["required_artifacts"]["dependency"])
+    required_paths = set(
+        manifest_policy["required_artifacts"]["revision"]
+        + manifest_policy["required_artifacts"]["dependency"]
+        + manifest_policy["required_artifacts"]["implementation"]
+    )
     assert set(manifest_paths) == required_paths
     assert len(manifest_paths) == len(required_paths)
     for relative, expected in manifest_paths.items():
