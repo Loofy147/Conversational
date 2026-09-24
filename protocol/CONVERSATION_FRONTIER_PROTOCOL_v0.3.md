@@ -23,7 +23,7 @@ The Frontier is a projection/orchestration layer. Domain facts, evidence, claims
 ## Canonical objects
 ConversationIdentity: immutable conversation lineage identity. Folder names and dates are locators only.
 FrontierRevision: immutable revision identified by frontier_id, revision, and parent_revision.
-FrontierEvent: append-only event with event_id, event_type, parent_revision, payload, and event_digest.
+FrontierEvent: append-only event with immutable conversation_id/frontier_id, event_id, event_type, parent_revision, payload, and event_digest. Identity is bound at event level and is inherited unchanged by the reduced frontier state.
 CanonicalSemanticState: deterministic reduction of the frontier event log.
 SourceBinding: versioned reference to an upstream source with digest, freshness, dependency scope, and required/optional status.
 ProjectionPolicy: deterministic rendering rule.
