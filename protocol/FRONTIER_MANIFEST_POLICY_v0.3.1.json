@@ -13,16 +13,18 @@
       "lineage/FRONTIER_OBJECTS_v0.3.json",
       "lineage/LINEAGE_REGISTER_v0.3.json",
       "lineage/SOURCE_REGISTRY_v0.3.json",
-      "protocol/PROJECTION_POLICY_v0.3.json",
-      "protocol/CANONICALIZATION_v0.3.json",
+      "protocol/PROJECTION_POLICY_v0.3.1.json",
+      "protocol/CANONICALIZATION_v0.3.1.json",
       "protocol/RESTORE_POLICY_v0.3.json",
       "protocol/STORAGE_CONTRACT_v0.3.json",
-      "protocol/DISCOVERY_INDEX_SPEC_v0.3.json"
+      "protocol/DISCOVERY_INDEX_SPEC_v0.3.json",
+      "protocol/SEMANTIC_EQUIVALENCE_PROFILE_v0.3.1.json",
+      "protocol/FRONTIER_MANIFEST_POLICY_v0.3.1.json"
     ]
   },
   "excluded":[
     "conversations/activation-001/HEAD.json",
     "conversations/activation-001/revisions/0005/MANIFEST.json"
   ],
-  "rule":"Manifest artifact set must equal the union of required_artifacts.revision and required_artifacts.dependency. Any omission, addition, or duplicate path is a verification failure."
+  "rule":"Manifest artifact set must equal the union of required revision and dependency paths. Omission, addition, duplicate, or missing path is a verification failure."
 }
