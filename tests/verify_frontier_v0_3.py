@@ -90,7 +90,7 @@ def main() -> None:
     assert head['revision_path'] == 'conversations/activation-001/revisions/0004'
     assert head['revision_manifest'] == 'conversations/activation-001/revisions/0004/MANIFEST.json'
 
-    assert stored['revision'] == 3
+    assert stored['revision'] == 4
     assert stored['identity'] == reduced['identity']
     assert stored['origin'] == reduced['origin']
     assert stored['objective'] == reduced['objective']
