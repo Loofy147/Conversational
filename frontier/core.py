@@ -296,6 +296,8 @@ def verify_repo(root: Path) -> dict[str, Any]:
     lineage = load_json(root, "lineage/LINEAGE_REGISTER_v0.3.json")
     manifest = load_json(root, "conversations/activation-001/revisions/0005/MANIFEST.json")
     policy = load_json(root, "protocol/PROJECTION_POLICY_v0.3.json")
+    semantic_profile = load_json(root, "protocol/SEMANTIC_EQUIVALENCE_PROFILE_v0.3.1.json")
+    manifest_policy = load_json(root, "protocol/FRONTIER_MANIFEST_POLICY_v0.3.1.json")
     canonicalization = load_json(root, "protocol/CANONICALIZATION_v0.3.json")
     restore = load_json(root, "conversations/activation-001/revisions/0005/RESTORE_RESULT.json")
     registry = load_json(root, "registry/CONVERSATIONS.json")
@@ -375,6 +377,8 @@ def verify_repo(root: Path) -> dict[str, Any]:
 
     assert policy["renderer"] == "deterministic-markdown-v0.3"
     assert policy["projection_authority"] == "DERIVED_ONLY"
+    assert semantic_profile["schema"] == "conversation-frontier-semantic-equivalence-profile-v0.3.1"
+    assert "current_question" in semantic_profile["semantic_fields"]
     assert canonicalization["serialization"]["unicode_normalization"] == "NFC"
     assert canonicalization["serialization"]["non_finite_numbers"] == "REJECT"
 
@@ -392,9 +396,17 @@ def verify_repo(root: Path) -> dict[str, Any]:
     assert restore["checks"]["external_boundary"] == "NOT_RUN"
 
     manifest_paths = {item["path"]: item["git_blob_sha"] for item in manifest["artifacts"]}
+    required_paths = set(manifest_policy["required_artifacts"]["revision"] + manifest_policy["required_artifacts"]["dependency"])
+    assert set(manifest_paths) == required_paths
+    assert len(manifest_paths) == len(required_paths)
     for relative, expected in manifest_paths.items():
         actual = _git_blob_sha(root, relative)
         assert actual == expected, (relative, actual, expected)
+
+    entrypoint = (root / "CONVERSATION_ENTRYPOINT.md").read_text(encoding="utf-8")
+    assert "HEAD revision: 5" in entrypoint
+    assert "CONTEXT_ONLY" in entrypoint
+    assert "external action authorization" in entrypoint
 
     return {
         "status": "PASS",
