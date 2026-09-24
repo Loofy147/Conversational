@@ -1,7 +1,7 @@
 {
-  "schema":"conversation-frontier-manifest-policy-v0.3.1",
-  "required_artifacts":{
-    "revision":[
+  "schema": "conversation-frontier-manifest-policy-v0.3.1",
+  "required_artifacts": {
+    "revision": [
       "conversations/activation-001/revisions/0005/FRONTIER_EVENT.json",
       "conversations/activation-001/revisions/0005/FRONTIER_STATE.json",
       "conversations/activation-001/revisions/0005/REDUCTION_SPEC.json",
@@ -9,7 +9,7 @@
       "conversations/activation-001/revisions/0005/RESTORE_RESULT.json",
       "conversations/activation-001/revisions/0005/INTEGRITY.json"
     ],
-    "dependency":[
+    "dependency": [
       "lineage/FRONTIER_OBJECTS_v0.3.json",
       "lineage/LINEAGE_REGISTER_v0.3.json",
       "lineage/SOURCE_REGISTRY_v0.3.json",
@@ -20,11 +20,18 @@
       "protocol/DISCOVERY_INDEX_SPEC_v0.3.json",
       "protocol/SEMANTIC_EQUIVALENCE_PROFILE_v0.3.1.json",
       "protocol/FRONTIER_MANIFEST_POLICY_v0.3.1.json"
+    ],
+    "implementation": [
+      ".github/workflows/verify-frontier.yml",
+      "frontier/__init__.py",
+      "frontier/core.py",
+      "tests/mutation_frontier_v0_3.py",
+      "tests/verify_frontier_v0_3.py"
     ]
   },
-  "excluded":[
+  "excluded": [
     "conversations/activation-001/HEAD.json",
     "conversations/activation-001/revisions/0005/MANIFEST.json"
   ],
-  "rule":"Manifest artifact set must equal the union of required revision and dependency paths. Omission, addition, duplicate, or missing path is a verification failure."
+  "rule": "Manifest artifact set must equal the union of required revision and dependency paths. Omission, addition, duplicate, or missing path is a verification failure."
 }
