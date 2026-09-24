@@ -80,7 +80,7 @@
     },
     {
       "path": "frontier/core.py",
-      "git_blob_sha": "7e2b7c61b7245e74a4b774f1233d8d7c55e2041f"
+      "git_blob_sha": "5e90cee49f134523de760b79f93026d85bcd8bb9"
     },
     {
       "path": "tests/mutation_frontier_v0_3.py",
