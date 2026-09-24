@@ -1,0 +1,12 @@
+{
+  "schema": "conversation-discovery-index-v0.3",
+  "authority": "REBUILDABLE_PROJECTION",
+  "rules": [
+    "conversation_id is immutable",
+    "folder path is a locator only",
+    "missing or stale index cannot create state",
+    "ambiguous discovery blocks activation",
+    "resolved revision, frontier_id, conversation_id, and revision digest must agree with HEAD",
+    "discovery does not grant action authorization"
+  ]
+}
