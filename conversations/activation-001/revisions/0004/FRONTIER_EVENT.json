@@ -1,0 +1,23 @@
+{
+  "schema": "conversation-frontier-event-v0.3",
+  "event_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier:event:0004",
+  "conversation_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc",
+  "frontier_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier",
+  "revision": 4,
+  "parent_revision": 3,
+  "previous_event_digest": "212f0aab9d6666cdaaff1c4e6f45370463ca99bc198d59e5165d0992e2b9c21f",
+  "event_type": "FRONTIER_HARDENED_OBJECTS",
+  "event_digest": "1d919e7f8db3892ea58c834b0bf1f389be1b47ff7011ff1c474b8b727f7f67e1",
+  "payload": {
+    "object_registry": "lineage/FRONTIER_OBJECTS_v0.3.json",
+    "revision_manifest": "conversations/activation-001/revisions/0004/MANIFEST.json",
+    "projection_policy": "protocol/PROJECTION_POLICY_v0.3.json",
+    "audit_basis": "Eliminate dangling decision/path/constraint/workstream references and bind the revision artifact set to repository-native content identities before canonical publication.",
+    "status": {
+      "frontier": "CANDIDATE",
+      "restore": "UNVERIFIED",
+      "publication": "PUBLISHED_TO_REPO_BRANCH",
+      "authenticity": "SELF_INTEGRITY_ONLY"
+    }
+  }
+}
