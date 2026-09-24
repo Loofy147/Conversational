@@ -5,9 +5,9 @@
   "frontier_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier",
   "revision": 5,
   "parent_revision": 4,
-  "previous_event_digest": "212f0aab9d6666cdaaff1c4e6f45370463ca99bc198d59e5165d0992e2b9c21f",
+  "previous_event_digest": "1d919e7f8db3892ea58c834b0bf1f389be1b47ff7011ff1c474b8b727f7f67e1",
   "event_type": "FRONTIER_BINDING_COMPLETED",
-  "event_digest": "108eb3d2544719d98771ff03adad54a23966aa1efc92f937e6dffee2c7ae097c",
+  "event_digest": "de7690268da89f9f846a119cea4528945ed30b464d961372d5452d16ff2a61c3",
   "payload": {
     "trajectory_refs": [
       "T001",
