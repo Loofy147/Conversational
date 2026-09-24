@@ -27,6 +27,14 @@
       "frontier/core.py",
       "tests/mutation_frontier_v0_3.py",
       "tests/verify_frontier_v0_3.py"
+    ],
+    "normative_contracts": [
+      "protocol/CONVERSATION_FRONTIER_PROTOCOL_v0.3.md",
+      "protocol/PROVENANCE_TRUST_BOUNDARY_v0.3.md"
+    ],
+    "discovery": [
+      "CONVERSATION_ENTRYPOINT.md",
+      "registry/CONVERSATIONS.json"
     ]
   },
   "excluded": [
