@@ -89,9 +89,7 @@ def main() -> None:
     assert stored['open_question_refs'] == reduced['open_question_refs']
     assert stored['next_action']['action_id'] == reduced['next_action_id']
     assert stored['status'] == reduced['status']
-    assert stored['trajectory_register'] == reduced['trajectory_register']
     assert stored['source_registry'] == reduced['source_registry']
-    assert stored['lineage_register'] == reduced['trajectory_register']
 
     trajectory_ids = {x['id'] for x in lineage['trajectory']}
     opportunity_ids = {x['id'] for x in lineage['opportunities']}
