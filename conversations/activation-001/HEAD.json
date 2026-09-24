@@ -2,10 +2,10 @@
   "schema": "conversation-frontier-head-v0.3",
   "conversation_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc",
   "frontier_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier",
-  "revision": 4,
-  "revision_path": "conversations/activation-001/revisions/0004",
+  "revision": 5,
+  "revision_path": "conversations/activation-001/revisions/0005",
   "head_semantics": "POINTER_ONLY",
   "expected_parent_rule": "compare-and-set at publication adapter",
   "continuation_permission": "CONTEXT_ONLY",
-  "revision_manifest": "conversations/activation-001/revisions/0004/MANIFEST.json"
+  "revision_manifest": "conversations/activation-001/revisions/0005/MANIFEST.json"
 }
