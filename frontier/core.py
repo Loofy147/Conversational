@@ -287,8 +287,7 @@ def render_projection(state: dict[str, Any], objects: dict[str, Any], lineage: d
         "Successful restoration grants context continuity only. External action authorization remains a separate gate.",
         "",
     ]
-    return "
-".join(lines)
+    return "\n".join(lines)
 
 
 def _git_blob_sha(root: Path, relative: str) -> str:
