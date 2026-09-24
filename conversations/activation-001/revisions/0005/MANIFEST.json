@@ -8,15 +8,15 @@
   "artifacts": [
     {
       "path": "conversations/activation-001/revisions/0005/FRONTIER_EVENT.json",
-      "git_blob_sha": "a968091ae7d4c7f2e458868eab4b10b13bd653c1"
+      "git_blob_sha": "c2094ac90d0aedc139fa729264a4f7a6752ec1e5"
     },
     {
       "path": "conversations/activation-001/revisions/0005/FRONTIER_STATE.json",
-      "git_blob_sha": "85e6ee2f2e36680f5be050c5d7fb3e66056e33b3"
+      "git_blob_sha": "369cdaec4376d2ce83a37909a4159717e73f68c4"
     },
     {
       "path": "conversations/activation-001/revisions/0005/REDUCTION_SPEC.json",
-      "git_blob_sha": "3a384f5cc5006f0bbd1ad33379f3891fc6f75e65"
+      "git_blob_sha": "c95598b80cbbaaf665eca531e67b3133d7634e3c"
     },
     {
       "path": "conversations/activation-001/revisions/0005/PROJECTION.md",
@@ -68,7 +68,7 @@
     },
     {
       "path": "protocol/FRONTIER_MANIFEST_POLICY_v0.3.1.json",
-      "git_blob_sha": "ea49944864888aa6789ce15f479616a7ab5ad090"
+      "git_blob_sha": "f4317710d45c9b24a3ed026fcd50bcd0eb0e39a1"
     },
     {
       "path": ".github/workflows/verify-frontier.yml",
@@ -80,7 +80,7 @@
     },
     {
       "path": "frontier/core.py",
-      "git_blob_sha": "cf252d1448a79cd72e4255bd2c7d7057e20a57df"
+      "git_blob_sha": "7e2b7c61b7245e74a4b774f1233d8d7c55e2041f"
     },
     {
       "path": "tests/mutation_frontier_v0_3.py",
@@ -89,13 +89,27 @@
     {
       "path": "tests/verify_frontier_v0_3.py",
       "git_blob_sha": "86b60084036b6d9fc25c7f6a74ee4e9a84a41736"
+    },
+    {
+      "path": "protocol/CONVERSATION_FRONTIER_PROTOCOL_v0.3.md",
+      "git_blob_sha": "e9858f8d8556d4d0320a6baeefee68d8fd1463c1"
+    },
+    {
+      "path": "protocol/PROVENANCE_TRUST_BOUNDARY_v0.3.md",
+      "git_blob_sha": "9a73e780cf1e001c1ab43f95e4d27d7cc2feacc5"
+    },
+    {
+      "path": "CONVERSATION_ENTRYPOINT.md",
+      "git_blob_sha": "b9c0df5d327d0396a4e1b7e420e89be6e4b63c11"
+    },
+    {
+      "path": "registry/CONVERSATIONS.json",
+      "git_blob_sha": "968daae65c73000133088c6cb6081fa4cfd91a3f"
     }
   ],
   "exclusions": [
     "conversations/activation-001/HEAD.json",
     "conversations/activation-001/revisions/0005/MANIFEST.json",
-    "registry/CONVERSATIONS.json",
-    "CONVERSATION_ENTRYPOINT.md",
     "README.md"
   ],
   "authenticity": "SELF_INTEGRITY_ONLY"
