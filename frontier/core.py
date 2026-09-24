@@ -234,7 +234,8 @@ def render_projection(state: dict[str, Any], objects: dict[str, Any], lineage: d
     ]
 
     for index, ref in enumerate(state["workstreams"]):
-        lines.append(f"{ref} {workstreams[ref]['name']}" + ("  " if index == 0 else "  "))
+        suffix = "  " if index < len(state["workstreams"]) - 1 else ""
+        lines.append(f"{ref} {workstreams[ref]['name']}" + suffix)
 
     lines += [
         "",
