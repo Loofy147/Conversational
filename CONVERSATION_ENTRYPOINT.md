@@ -8,7 +8,7 @@ This is the entrypoint for a genuinely fresh conversation.
 3. Resolve registry/CONVERSATIONS.json.
 4. Resolve the selected conversation HEAD.json.
 5. Resolve the revision referenced by HEAD.
-6. Verify the frontier event chain and reduce the events through HEAD revision 4.
+6. Verify the frontier event chain and reduce the events through the revision named by HEAD.
 7. Verify every manifest Git blob identity, then resolve lineage/LINEAGE_REGISTER_v0.3.json, lineage/SOURCE_REGISTRY_v0.3.json, and lineage/FRONTIER_OBJECTS_v0.3.json.
 8. Compare reduced state with FRONTIER_STATE.json.
 9. Verify projection and restore policy.
@@ -18,7 +18,7 @@ This is the entrypoint for a genuinely fresh conversation.
 ## Current activation
 - Conversation: conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc
 - Frontier: conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier
-- HEAD revision: 4
+- HEAD revision: resolve from HEAD.json
 - Lifecycle: CANDIDATE
 - Restore: UNVERIFIED
 - Continuation permission: CONTEXT_ONLY

@@ -1,0 +1,33 @@
+{
+  "schema":"conversation-frontier-semantic-equivalence-profile-v0.3.1",
+  "algorithm":"Resolve state references into ordered semantic object content, exclude identity/storage/publication/authenticity/provenance metadata, NFC-normalize strings, canonicalize JSON, then SHA-256.",
+  "semantic_fields":[
+    "origin",
+    "objective",
+    "current_question",
+    "workstreams",
+    "trajectory",
+    "preserved_opportunities",
+    "open_questions",
+    "decisions",
+    "rejected_paths",
+    "constraints",
+    "next_action"
+  ],
+  "excluded_fields":[
+    "conversation_id",
+    "frontier_id",
+    "revision",
+    "folder",
+    "publication",
+    "authenticity",
+    "source_bindings",
+    "dependency_edges",
+    "runtime_metadata",
+    "storage_metadata",
+    "integrity",
+    "HEAD"
+  ],
+  "invariance":"Changing only excluded fields must not change semantic_digest.",
+  "provenance_rule":"Semantic equality does not imply provenance equality; provenance compatibility is evaluated separately."
+}

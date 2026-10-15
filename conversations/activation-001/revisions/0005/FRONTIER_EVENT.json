@@ -1,0 +1,83 @@
+{
+  "schema": "conversation-frontier-event-v0.3",
+  "event_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier:event:0005",
+  "conversation_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc",
+  "frontier_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier",
+  "revision": 5,
+  "parent_revision": 4,
+  "previous_event_digest": "1d919e7f8db3892ea58c834b0bf1f389be1b47ff7011ff1c474b8b727f7f67e1",
+  "event_type": "FRONTIER_BINDING_COMPLETED",
+  "event_digest": "de7690268da89f9f846a119cea4528945ed30b464d961372d5452d16ff2a61c3",
+  "payload": {
+    "trajectory_refs": [
+      "T001",
+      "T002",
+      "T003",
+      "T004",
+      "T005",
+      "T006",
+      "T007",
+      "T008",
+      "T009",
+      "T010",
+      "T011",
+      "T012",
+      "T013",
+      "T014",
+      "T015",
+      "T016",
+      "T017",
+      "T018",
+      "T019"
+    ],
+    "preserved_opportunity_refs": [
+      "O001",
+      "O002",
+      "O003",
+      "O004",
+      "O005",
+      "O006",
+      "O007",
+      "O008",
+      "O009",
+      "O010",
+      "O011",
+      "O012",
+      "O013",
+      "O014"
+    ],
+    "forbidden_assumption_refs": [
+      "C001",
+      "C002",
+      "C003",
+      "C004",
+      "C005"
+    ],
+    "audit_basis": "Bind every material canonical frontier reference required by the stored state into append-only event history so the frontier can be reconstructed without shadow state.",
+    "status": {
+      "frontier": "CANDIDATE",
+      "restore": "UNVERIFIED",
+      "publication": "PUBLISHED_TO_REPO_BRANCH",
+      "authenticity": "SELF_INTEGRITY_ONLY"
+    },
+    "canonicalization_policy": "protocol/CANONICALIZATION_v0.3.1.json",
+    "projection_policy": "protocol/PROJECTION_POLICY_v0.3.1.json",
+    "semantic_equivalence_profile": "protocol/SEMANTIC_EQUIVALENCE_PROFILE_v0.3.1.json",
+    "manifest_policy": "protocol/FRONTIER_MANIFEST_POLICY_v0.3.1.json",
+    "implementation_refs": [
+      ".github/workflows/verify-frontier.yml",
+      "frontier/__init__.py",
+      "frontier/core.py",
+      "tests/mutation_frontier_v0_3.py",
+      "tests/verify_frontier_v0_3.py"
+    ],
+    "normative_contract_refs": [
+      "protocol/CONVERSATION_FRONTIER_PROTOCOL_v0.3.md",
+      "protocol/PROVENANCE_TRUST_BOUNDARY_v0.3.md"
+    ],
+    "discovery_refs": [
+      "CONVERSATION_ENTRYPOINT.md",
+      "registry/CONVERSATIONS.json"
+    ]
+  }
+}

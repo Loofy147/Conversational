@@ -1,0 +1,46 @@
+{
+  "schema":"conversation-frontier-canonicalization-v0.3.1",
+  "serialization":{
+    "format":"UTF-8 JSON",
+    "ensure_ascii":false,
+    "sort_keys":true,
+    "separators":[",",":"],
+    "trailing_newline":false,
+    "unicode_normalization":"NFC",
+    "non_finite_numbers":"REJECT"
+  },
+  "semantic_resolution":{
+    "resolve_references":true,
+    "include_object_content_without_ids":true,
+    "ordered_by_state_reference_order":true
+  },
+  "semantic_fields":[
+    "origin",
+    "objective",
+    "current_question",
+    "workstreams",
+    "trajectory",
+    "preserved_opportunities",
+    "open_questions",
+    "decisions",
+    "rejected_paths",
+    "constraints",
+    "next_action"
+  ],
+  "excluded_metadata":[
+    "conversation_id",
+    "frontier_id",
+    "revision",
+    "parent_revision",
+    "folder",
+    "publication",
+    "authenticity",
+    "source_bindings",
+    "dependency_edges",
+    "runtime_metadata",
+    "storage_metadata",
+    "integrity",
+    "HEAD"
+  ],
+  "equivalence":"semantic content equality; provenance compatibility evaluated separately"
+}
