@@ -84,7 +84,7 @@
     },
     {
       "path": "tests/mutation_frontier_v0_3.py",
-      "git_blob_sha": "e1d2c8e57f9d5abd80e5477194198908124b8054"
+      "git_blob_sha": "008937fa22f807727903b07f76d98fefe3fdfa39"
     },
     {
       "path": "tests/verify_frontier_v0_3.py",
