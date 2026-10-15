@@ -8,7 +8,7 @@
   "expected_parent_rule": "compare-and-set at publication adapter",
   "continuation_permission": "CONTEXT_ONLY",
   "revision_manifest": "conversations/activation-001/revisions/0005/MANIFEST.json",
-  "revision_manifest_blob_sha": "d5076967325340ea2015d5065d4aa67e1e68d075",
+  "revision_manifest_blob_sha": "32e0e7c069255ceb6c2f366177449258844ec8c0",
   "discovery_entrypoint_blob_sha": "b9c0df5d327d0396a4e1b7e420e89be6e4b63c11",
   "discovery_registry_blob_sha": "968daae65c73000133088c6cb6081fa4cfd91a3f"
 }
