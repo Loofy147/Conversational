@@ -440,7 +440,7 @@ def verify_repo(root: Path) -> dict[str, Any]:
     entrypoint = (root / "CONVERSATION_ENTRYPOINT.md").read_text(encoding="utf-8")
     assert "revision named by HEAD" in entrypoint
     assert "CONTEXT_ONLY" in entrypoint
-    assert "external action authorization" in entrypoint
+    assert "SEPARATE_GATE_REQUIRED" in entrypoint
 
     return {
         "status": "PASS",
