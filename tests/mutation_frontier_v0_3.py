@@ -94,7 +94,7 @@ def main() -> None:
             "entrypoint_stale_revision",
             "CONVERSATION_ENTRYPOINT.md",
             lambda p: p.write_text(
-                p.read_text(encoding="utf-8").replace("HEAD revision: 5", "HEAD revision: 4"),
+                p.read_text(encoding="utf-8").replace("HEAD revision: resolve from HEAD", "HEAD revision: 4"),
                 encoding="utf-8",
             ),
         ),
