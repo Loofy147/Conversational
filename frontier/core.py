@@ -135,6 +135,11 @@ def reduce_events(root: Path, head_revision: int) -> dict[str, Any]:
         previous_event_digest = event["event_digest"]
 
     assert state is not None
+    # The active revision manifest is envelope metadata: derive its locator from
+    # the revision being reduced instead of carrying forward a prior revision's path.
+    state["revision_manifest"] = (
+        f"conversations/activation-001/revisions/{head_revision:04d}/MANIFEST.json"
+    )
     return state
 
 
