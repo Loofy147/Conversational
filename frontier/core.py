@@ -88,7 +88,8 @@ def reduce_events(root: Path, head_revision: int) -> dict[str, Any]:
             if "workstream_ids" in payload:
                 state["workstreams"] = list(payload["workstream_ids"])
             if "trajectory_register" in payload:
-                state["trajectory_register"] = payload["trajectory_register"]
+                # Historical event key is trajectory_register; canonical state names this lineage_register.
+                state["lineage_register"] = payload["trajectory_register"]
             if "source_registry" in payload:
                 state["source_registry"] = payload["source_registry"]
             if "opportunity_register" in payload:
