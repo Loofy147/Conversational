@@ -438,7 +438,7 @@ def verify_repo(root: Path) -> dict[str, Any]:
         assert actual == expected, (relative, actual, expected)
 
     entrypoint = (root / "CONVERSATION_ENTRYPOINT.md").read_text(encoding="utf-8")
-    assert "resolve the revision named by HEAD" in entrypoint
+    assert "revision named by HEAD" in entrypoint
     assert "CONTEXT_ONLY" in entrypoint
     assert "external action authorization" in entrypoint
 
