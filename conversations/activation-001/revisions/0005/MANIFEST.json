@@ -8,7 +8,7 @@
   "artifacts": [
     {
       "path": "conversations/activation-001/revisions/0005/FRONTIER_EVENT.json",
-      "git_blob_sha": "c2094ac90d0aedc139fa729264a4f7a6752ec1e5"
+      "git_blob_sha": "1e166052f10000b0227c7859661e31ec49dc106a"
     },
     {
       "path": "conversations/activation-001/revisions/0005/FRONTIER_STATE.json",
