@@ -401,7 +401,7 @@ def verify_repo(root: Path) -> dict[str, Any]:
     assert generated_projection == stored_projection
 
     assert policy["renderer"] == "frontier.core.render_projection"
-    assert policy["projection_authority"] == "DERIVED_ONLY"
+    assert policy["rules"]["projection_authority"] == "DERIVED_ONLY"
     assert semantic_profile["schema"] == "conversation-frontier-semantic-equivalence-profile-v0.3.1"
     assert "current_question" in semantic_profile["semantic_fields"]
     assert semantic_profile["invariance"] == "Changing only excluded fields must not change semantic_digest."
