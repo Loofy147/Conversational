@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Preserve the work frontier across conversation boundaries without making the frontier itself a second source of truth.
+Preserve the work frontier across conversation boundaries without making reconstructed context canonical truth.
 
 ## Current question
 
@@ -35,7 +35,8 @@ Q001–Q013 remain OPEN.
 
 ## Decisions
 
-D001 is superseded by D005. D002–D005 remain established.
+D001 is superseded by D005.
+D002–D005 remain established.
 
 ## Rejected paths
 
