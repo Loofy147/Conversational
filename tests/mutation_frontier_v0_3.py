@@ -4,10 +4,13 @@ import json
 import shutil
 import tempfile
 from pathlib import Path
-
-from frontier.core import verify_repo
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from frontier.core import verify_repo
 
 
 def load(path: Path) -> object:
