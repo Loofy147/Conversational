@@ -2,13 +2,13 @@
   "schema": "conversation-frontier-head-v0.3",
   "conversation_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc",
   "frontier_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier",
-  "revision": 5,
-  "revision_path": "conversations/activation-001/revisions/0005",
+  "revision": 6,
+  "revision_path": "conversations/activation-001/revisions/0006",
   "head_semantics": "POINTER_ONLY",
   "expected_parent_rule": "compare-and-set at publication adapter",
   "continuation_permission": "CONTEXT_ONLY",
-  "revision_manifest": "conversations/activation-001/revisions/0005/MANIFEST.json",
-  "revision_manifest_blob_sha": "9e075b7e460eec08caa0745e21fceb04ee58eab4",
+  "revision_manifest": "conversations/activation-001/revisions/0006/MANIFEST.json",
+  "revision_manifest_blob_sha": "242c72ffd4efddc2a0f5eb7e6a004a9127824a6b",
   "discovery_entrypoint_blob_sha": "b9c0df5d327d0396a4e1b7e420e89be6e4b63c11",
-  "discovery_registry_blob_sha": "968daae65c73000133088c6cb6081fa4cfd91a3f"
+  "discovery_registry_blob_sha": "8994409c023c833f3f130f37be8898f09575b715"
 }

@@ -130,6 +130,10 @@ def reduce_events(root: Path, head_revision: int) -> dict[str, Any]:
                 state["normative_contract_refs"] = list(payload["normative_contract_refs"])
             if "discovery_refs" in payload:
                 state["discovery_refs"] = list(payload["discovery_refs"])
+            if "next_action_ref" in payload:
+                state["next_action_ref"] = payload["next_action_ref"]
+            if "external_boundary_restore" in payload:
+                state["external_boundary_restore"] = dict(payload["external_boundary_restore"])
             state["status"].update(payload.get("status", {}))
 
         previous_event_digest = event["event_digest"]
@@ -165,7 +169,8 @@ def semantic_projection(state: dict[str, Any], objects: dict[str, Any], lineage:
     opportunities = _indexed(lineage["opportunities"])
     questions = _indexed(lineage["open_questions"])
 
-    action = actions[state["next_action_ref"]]
+    action_ref = state.get("next_action_ref")
+    action = actions[action_ref] if action_ref is not None else None
 
     return {
         "origin": state["origin"],
@@ -212,7 +217,7 @@ def semantic_projection(state: dict[str, Any], objects: dict[str, Any], lineage:
         "constraints": [
             item["statement"] for item in _ordered(constraints, state["constraint_refs"])
         ],
-        "next_action": {
+        "next_action": None if action is None else {
             "purpose": action["purpose"],
             "action": action["action"],
             "expected_signal": action["expected_signal"],
@@ -282,7 +287,11 @@ def render_projection(state: dict[str, Any], objects: dict[str, Any], lineage: d
         "",
         "## Next action",
         "",
-        "A001 — Run the first genuine external-boundary restore from a fresh conversation.",
+        (
+            "A001 — Run the first genuine external-boundary restore from a fresh conversation."
+            if state.get("next_action_ref") == "A001"
+            else "No subsequent action is specified by the verified artifacts."
+        ),
         "",
         "## Constraints",
         "",
@@ -305,56 +314,46 @@ def _git_blob_sha(root: Path, relative: str) -> str:
 
 
 def verify_repo(root: Path) -> dict[str, Any]:
-    act = root / "conversations" / "activation-001"
     head = load_json(root, "conversations/activation-001/HEAD.json")
-    assert head["revision"] == 5
+    revision = int(head["revision"])
+    assert revision >= 6, "revision-aware verifier expects the recorded external-boundary attempt"
+    revision_path = f"conversations/activation-001/revisions/{revision:04d}"
+    state_path = f"{revision_path}/FRONTIER_STATE.json"
+    manifest_path = f"{revision_path}/MANIFEST.json"
 
-    reduced = reduce_events(root, head["revision"])
-    stored = load_json(root, "conversations/activation-001/revisions/0005/FRONTIER_STATE.json")
-    objects = load_json(root, "lineage/FRONTIER_OBJECTS_v0.3.json")
-    lineage = load_json(root, "lineage/LINEAGE_REGISTER_v0.3.json")
-    manifest = load_json(root, "conversations/activation-001/revisions/0005/MANIFEST.json")
-    policy = load_json(root, "protocol/PROJECTION_POLICY_v0.3.1.json")
-    semantic_profile = load_json(root, "protocol/SEMANTIC_EQUIVALENCE_PROFILE_v0.3.1.json")
-    manifest_policy = load_json(root, "protocol/FRONTIER_MANIFEST_POLICY_v0.3.1.json")
-    canonicalization = load_json(root, "protocol/CANONICALIZATION_v0.3.1.json")
-    restore = load_json(root, "conversations/activation-001/revisions/0005/RESTORE_RESULT.json")
+    reduced = reduce_events(root, revision)
+    stored = load_json(root, state_path)
+    objects = load_json(root, stored["object_registry"])
+    lineage = load_json(root, stored["lineage_register"])
+    source_registry = load_json(root, stored["source_registry"])
+    manifest = load_json(root, manifest_path)
+    policy = load_json(root, stored["projection_policy"])
+    semantic_profile = load_json(root, stored["semantic_equivalence_profile"])
+    manifest_policy = load_json(root, stored["manifest_policy"])
+    canonicalization = load_json(root, stored["canonicalization_policy"])
+    restore = load_json(root, f"{revision_path}/RESTORE_RESULT.json")
+    evidence = load_json(root, f"{revision_path}/EXTERNAL_BOUNDARY_EVIDENCE.json")
     registry = load_json(root, "registry/CONVERSATIONS.json")
 
     assert head["frontier_id"] == stored["identity"]["frontier_id"]
     assert head["conversation_id"] == stored["identity"]["conversation_id"]
-    assert head["revision_path"] == "conversations/activation-001/revisions/0005"
-    assert head["revision_manifest"] == "conversations/activation-001/revisions/0005/MANIFEST.json"
+    assert head["revision_path"] == revision_path
+    assert head["revision_manifest"] == manifest_path
+    assert stored["revision"] == revision
+    assert head["revision_manifest_blob_sha"] == _git_blob_sha(root, manifest_path)
+    assert head["discovery_entrypoint_blob_sha"] == _git_blob_sha(root, "CONVERSATION_ENTRYPOINT.md")
+    assert head["discovery_registry_blob_sha"] == _git_blob_sha(root, "registry/CONVERSATIONS.json")
 
     for field in (
-        "origin",
-        "objective",
-        "current_question",
-        "workstreams",
-        "trajectory_refs",
-        "preserved_opportunity_refs",
-        "open_question_refs",
-        "decision_refs",
-        "rejected_path_refs",
-        "constraint_refs",
-        "next_action_ref",
-        "forbidden_assumption_refs",
-        "source_registry",
-        "lineage_register",
-        "object_registry",
-        "projection_policy",
-        "semantic_equivalence_profile",
-        "manifest_policy",
-        "canonicalization_policy",
-        "revision_manifest",
-        "implementation_refs",
-        "normative_contract_refs",
-        "discovery_refs",
-        "status",
+        "origin", "objective", "current_question", "workstreams", "trajectory_refs",
+        "preserved_opportunity_refs", "open_question_refs", "decision_refs",
+        "rejected_path_refs", "constraint_refs", "next_action_ref", "forbidden_assumption_refs",
+        "source_registry", "lineage_register", "object_registry", "projection_policy",
+        "semantic_equivalence_profile", "manifest_policy", "canonicalization_policy",
+        "revision_manifest", "implementation_refs", "normative_contract_refs", "discovery_refs",
+        "external_boundary_restore", "status",
     ):
         assert stored[field] == reduced[field], field
-
-    assert stored["revision"] == 5
 
     object_ids = {
         "workstreams": {x["id"] for x in objects["workstreams"]},
@@ -367,41 +366,30 @@ def verify_repo(root: Path) -> dict[str, Any]:
     assert set(stored["decision_refs"]) == object_ids["decisions"]
     assert set(stored["rejected_path_refs"]) == object_ids["rejected_path_refs"]
     assert set(stored["constraint_refs"]) == object_ids["constraints"]
-    assert stored["next_action_ref"] in object_ids["actions"]
-
+    assert stored["next_action_ref"] is None or stored["next_action_ref"] in object_ids["actions"]
     assert set(stored["trajectory_refs"]) == {x["id"] for x in lineage["trajectory"]}
     assert set(stored["preserved_opportunity_refs"]) == {x["id"] for x in lineage["opportunities"]}
     assert set(stored["open_question_refs"]) == {x["id"] for x in lineage["open_questions"]}
 
-    source_ids = {x["id"] for x in load_json(root, "lineage/SOURCE_REGISTRY_v0.3.json")["sources"]}
-    referenced_source_ids = {
-        sid
-        for item in lineage["trajectory"] + lineage["opportunities"]
-        for sid in item["sources"]
-    }
+    source_ids = {x["id"] for x in source_registry["sources"]}
+    referenced_source_ids = {sid for item in lineage["trajectory"] + lineage["opportunities"] for sid in item["sources"]}
     assert referenced_source_ids <= source_ids
 
     semantic_a = semantic_projection(stored, objects, lineage)
     semantic_b = semantic_projection(reduced, objects, lineage)
     assert semantic_a == semantic_b
-    digest_a = digest(semantic_a)
-    digest_b = digest(semantic_b)
+    digest_a, digest_b = digest(semantic_a), digest(semantic_b)
     assert digest_a == digest_b
 
     identity_variant = json.loads(json.dumps(stored))
-    identity_variant["identity"] = {
-        "conversation_id": "different-conversation",
-        "frontier_id": "different-frontier",
-    }
+    identity_variant["identity"] = {"conversation_id": "different-conversation", "frontier_id": "different-frontier"}
     identity_variant["revision"] = 999
     assert semantic_digest(identity_variant, objects, lineage) == digest_a
 
-    generated_projection = render_projection(stored, objects, lineage)
-    stored_projection = (root / "conversations/activation-001/revisions/0005/PROJECTION.md").read_text(encoding="utf-8")
-    assert generated_projection == stored_projection
-
+    assert render_projection(stored, objects, lineage) == (root / f"{revision_path}/PROJECTION.md").read_text(encoding="utf-8")
     assert policy["renderer"] == "frontier.core.render_projection"
     assert policy["rules"]["projection_authority"] == "DERIVED_ONLY"
+    assert policy["source"].format(revision=revision) == state_path
     assert semantic_profile["schema"] == "conversation-frontier-semantic-equivalence-profile-v0.3.1"
     assert "current_question" in semantic_profile["semantic_fields"]
     assert semantic_profile["invariance"] == "Changing only excluded fields must not change semantic_digest."
@@ -414,14 +402,28 @@ def verify_repo(root: Path) -> dict[str, Any]:
     assert entry["conversation_id"] == stored["identity"]["conversation_id"]
     assert entry["frontier_id"] == stored["identity"]["frontier_id"]
     assert entry["head"] == "conversations/activation-001/HEAD.json"
-    assert entry["revision"] == 5
-    assert entry["status"] == "CANDIDATE"
+    assert entry["revision"] == revision and entry["status"] == "CANDIDATE"
 
+    assert restore["revision"] == revision
     assert restore["continuation_permission"] == "CONTEXT_ONLY"
     assert restore["action_authorization"] == "SEPARATE_GATE_REQUIRED"
     assert restore["checks"]["event_log_reduction"] == "PASS"
+    assert restore["checks"]["semantic_equivalence"] == "PASS"
+    assert restore["checks"]["projection_reproduction"] == "PASS"
     assert restore["checks"]["object_reference_closure"] == "PASS"
-    assert restore["checks"]["external_boundary"] == "NOT_RUN"
+    assert restore["checks"]["external_boundary"] == "PASS_REPORTED"
+    assert restore["checks"]["external_boundary_report_attestation"] == "BLOCKED"
+    assert restore["checks"]["historical_source_byte_revalidation"] == "BLOCKED"
+    assert restore["checks"]["trusted_authenticity_root"] == "BLOCKED"
+    assert restore["status"] == "CANDIDATE_AFTER_REPORTED_EXTERNAL_BOUNDARY_RESTORE"
+    assert evidence["attempt_id"] == stored["external_boundary_restore"]["attempt_id"]
+    assert evidence["reported_result"]["checks"]["external_boundary"] == "PASS"
+    assert evidence["reported_result"]["status"] == "CANDIDATE"
+    assert evidence["reported_result"]["action_authorization"] == "BLOCKED"
+    assert evidence["capture"]["independently_attested_in_this_publication"] is False
+    assert stored["external_boundary_restore"]["reported_outcome"] == "PASS"
+    assert stored["external_boundary_restore"]["independent_attestation"] == "NOT_ESTABLISHED_BY_THIS_REPOSITORY_PUBLICATION"
+    assert stored["next_action_ref"] is None
 
     manifest_paths = {item["path"]: item["git_blob_sha"] for item in manifest["artifacts"]}
     required_paths = set(
@@ -431,6 +433,7 @@ def verify_repo(root: Path) -> dict[str, Any]:
         + manifest_policy["required_artifacts"]["normative_contracts"]
         + manifest_policy["required_artifacts"]["discovery"]
     )
+    required_paths = {path.replace("{revision_path}", revision_path) for path in required_paths}
     assert set(manifest_paths) == required_paths
     assert len(manifest_paths) == len(required_paths)
     for relative, expected in manifest_paths.items():
@@ -441,12 +444,12 @@ def verify_repo(root: Path) -> dict[str, Any]:
     assert "revision named by HEAD" in entrypoint
     assert "CONTEXT_ONLY" in entrypoint
     assert "SEPARATE_GATE_REQUIRED" in entrypoint
-
     return {
         "status": "PASS",
-        "revision": 5,
+        "revision": revision,
         "semantic_digest": digest_a,
         "manifest_artifacts": len(manifest_paths),
         "continuation_permission": restore["continuation_permission"],
         "external_boundary": restore["checks"]["external_boundary"],
+        "external_boundary_report_attestation": restore["checks"]["external_boundary_report_attestation"],
     }

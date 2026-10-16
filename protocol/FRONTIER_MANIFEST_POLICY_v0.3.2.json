@@ -1,0 +1,47 @@
+{
+  "schema": "conversation-frontier-manifest-policy-v0.3.2",
+  "required_artifacts": {
+    "revision": [
+      "{revision_path}/FRONTIER_EVENT.json",
+      "{revision_path}/FRONTIER_STATE.json",
+      "{revision_path}/REDUCTION_SPEC.json",
+      "{revision_path}/PROJECTION.md",
+      "{revision_path}/RESTORE_RESULT.json",
+      "{revision_path}/INTEGRITY.json",
+      "{revision_path}/EXTERNAL_BOUNDARY_EVIDENCE.json"
+    ],
+    "dependency": [
+      "lineage/FRONTIER_OBJECTS_v0.3.json",
+      "lineage/LINEAGE_REGISTER_v0.3.json",
+      "lineage/SOURCE_REGISTRY_v0.3.json",
+      "protocol/PROJECTION_POLICY_v0.3.2.json",
+      "protocol/CANONICALIZATION_v0.3.1.json",
+      "protocol/RESTORE_POLICY_v0.3.json",
+      "protocol/STORAGE_CONTRACT_v0.3.json",
+      "protocol/DISCOVERY_INDEX_SPEC_v0.3.json",
+      "protocol/SEMANTIC_EQUIVALENCE_PROFILE_v0.3.1.json",
+      "protocol/FRONTIER_MANIFEST_POLICY_v0.3.2.json"
+    ],
+    "implementation": [
+      ".github/workflows/verify-frontier.yml",
+      "frontier/__init__.py",
+      "frontier/core.py",
+      "tests/mutation_frontier_v0_3.py",
+      "tests/verify_frontier_v0_3.py"
+    ],
+    "normative_contracts": [
+      "protocol/CONVERSATION_FRONTIER_PROTOCOL_v0.3.md",
+      "protocol/PROVENANCE_TRUST_BOUNDARY_v0.3.md"
+    ],
+    "discovery": [
+      "CONVERSATION_ENTRYPOINT.md",
+      "registry/CONVERSATIONS.json"
+    ]
+  },
+  "excluded": [
+    "conversations/activation-001/HEAD.json",
+    "{revision_path}/MANIFEST.json",
+    "README.md"
+  ],
+  "rule": "Resolve {revision_path} from HEAD. Manifest artifact set must equal the union of required revision and dependency paths. Omission, addition, duplicate, or missing path is a verification failure."
+}
