@@ -7,6 +7,8 @@ from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+ACTIVE_REVISION = json.loads((ROOT / "conversations/activation-001/HEAD.json").read_text(encoding="utf-8"))["revision"]
+ACTIVE_REVISION_PATH = f"conversations/activation-001/revisions/{ACTIVE_REVISION:04d}"
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
@@ -42,32 +44,32 @@ def main() -> None:
     cases = [
         (
             "event_payload_tamper",
-            "conversations/activation-001/revisions/0005/FRONTIER_EVENT.json",
+            f"{ACTIVE_REVISION_PATH}/FRONTIER_EVENT.json",
             lambda p: _change_json(p, lambda x: x["payload"].update({"audit_basis": "tampered"})),
         ),
         (
             "state_semantic_tamper",
-            "conversations/activation-001/revisions/0005/FRONTIER_STATE.json",
+            f"{ACTIVE_REVISION_PATH}/FRONTIER_STATE.json",
             lambda p: _change_json(p, lambda x: x.update({"current_question": "tampered"})),
         ),
         (
             "state_identity_tamper",
-            "conversations/activation-001/revisions/0005/FRONTIER_STATE.json",
+            f"{ACTIVE_REVISION_PATH}/FRONTIER_STATE.json",
             lambda p: _change_json(p, lambda x: x["identity"].update({"frontier_id": "wrong"})),
         ),
         (
             "event_chain_tamper",
-            "conversations/activation-001/revisions/0005/FRONTIER_EVENT.json",
+            f"{ACTIVE_REVISION_PATH}/FRONTIER_EVENT.json",
             lambda p: _change_json(p, lambda x: x.update({"previous_event_digest": "wrong"})),
         ),
         (
             "manifest_omission",
-            "conversations/activation-001/revisions/0005/MANIFEST.json",
+            f"{ACTIVE_REVISION_PATH}/MANIFEST.json",
             lambda p: _remove_last_manifest_artifact(p),
         ),
         (
             "manifest_hash_tamper",
-            "conversations/activation-001/revisions/0005/MANIFEST.json",
+            f"{ACTIVE_REVISION_PATH}/MANIFEST.json",
             lambda p: _change_json(p, lambda x: x["artifacts"][0].update({"git_blob_sha": "0000000000000000000000000000000000000000"})),
         ),
         (
@@ -82,7 +84,7 @@ def main() -> None:
         ),
         (
             "projection_tamper",
-            "conversations/activation-001/revisions/0005/PROJECTION.md",
+            f"{ACTIVE_REVISION_PATH}/PROJECTION.md",
             lambda p: p.write_text(
                 p.read_text(encoding="utf-8").replace("## Current question", "## Tampered question"),
                 encoding="utf-8",
@@ -90,8 +92,13 @@ def main() -> None:
         ),
         (
             "restore_permission_escalation",
-            "conversations/activation-001/revisions/0005/RESTORE_RESULT.json",
+            f"{ACTIVE_REVISION_PATH}/RESTORE_RESULT.json",
             lambda p: _change_json(p, lambda x: x.update({"continuation_permission": "ACTION_ALLOWED"})),
+        ),
+        (
+            "restore_boundary_status_tamper",
+            f"{ACTIVE_REVISION_PATH}/RESTORE_RESULT.json",
+            lambda p: _change_json(p, lambda x: x["checks"].update({"external_boundary": "ACTION_ALLOWED"})),
         ),
         (
             "entrypoint_stale_revision",

@@ -1,0 +1,26 @@
+{
+  "schema": "conversation-frontier-restore-result-v0.3",
+  "status": "CANDIDATE_AFTER_REPORTED_EXTERNAL_BOUNDARY_RESTORE",
+  "activation": "001",
+  "revision": 6,
+  "recorded_attempt": "EBR-001",
+  "checks": {
+    "revision_chain": "PASS",
+    "event_log_reduction": "PASS",
+    "semantic_equivalence": "PASS",
+    "projection_reproduction": "PASS",
+    "object_reference_closure": "PASS",
+    "schema_resolution": "PASS",
+    "policy_resolution": "PASS",
+    "source_binding_resolution": "PASS_WITH_HISTORICAL_SOURCES",
+    "discovery": "PASS_WITH_REPO_HEAD",
+    "repository_ci_verification_on_base_commit": "PASS",
+    "external_boundary": "PASS_REPORTED",
+    "external_boundary_report_attestation": "BLOCKED",
+    "historical_source_byte_revalidation": "BLOCKED",
+    "trusted_authenticity_root": "BLOCKED"
+  },
+  "continuation_permission": "CONTEXT_ONLY",
+  "action_authorization": "SEPARATE_GATE_REQUIRED",
+  "next_action": "NOT_SPECIFIED_BY_VERIFIED_ARTIFACTS"
+}

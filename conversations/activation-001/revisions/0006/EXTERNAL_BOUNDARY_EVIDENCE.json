@@ -1,0 +1,60 @@
+{
+  "schema": "conversation-frontier-external-boundary-evidence-v0.1",
+  "attempt_id": "EBR-001",
+  "capture": {
+    "method": "TRANSCRIBED_FROM_USER_SUPPLIED_RESTORE_RESULT",
+    "source_claim": "The submitted report identifies itself as the result of a genuinely fresh conversation.",
+    "independently_attested_in_this_publication": false,
+    "note": "This repository record preserves the submitted result and its stated limits; it does not independently attest the origin conversation or recreate that separate conversation."
+  },
+  "reported_result": {
+    "schema": "RestoreResult",
+    "repository": "Loofy147/Conversational",
+    "repository_commit": "4c2249fdfaaa89dbd77a0f9ed9cf67d7841785a2",
+    "conversation_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc",
+    "frontier_id": "conv-e274d6a5-0989-4a1f-8df9-53da53ed55bc:frontier",
+    "revision": 5,
+    "status": "CANDIDATE",
+    "checks": {
+      "entrypoint_and_discovery": "PASS",
+      "registry_head_identity": "PASS",
+      "revision_resolution": "PASS",
+      "event_chain_integrity": "PASS",
+      "canonical_event_reduction": "PASS",
+      "manifest_blob_identities": "PASS",
+      "canonical_state_equivalence": "PASS",
+      "semantic_projection": "PASS",
+      "lineage_and_object_closure": "PASS",
+      "source_reference_closure": "PASS",
+      "historical_source_byte_revalidation": "BLOCKED",
+      "restore_policy_resolution": "PASS",
+      "repository_ci_verification": "PASS",
+      "trusted_authenticity_root": "BLOCKED",
+      "external_boundary": "PASS",
+      "lifecycle_promotion": "BLOCKED",
+      "authorization_boundary_separation": "PASS",
+      "external_action_authorization": "BLOCKED"
+    },
+    "restored": {
+      "current_question": "Can this activation preserve and restore the work frontier across a future conversation without treating reconstructed context as canonical truth?",
+      "next_action_ref": "A001",
+      "next_action": "Run the first genuine external-boundary restore from a fresh conversation."
+    },
+    "continuation_permission": "CONTEXT_ONLY",
+    "action_authorization": "BLOCKED",
+    "persisted_result": false
+  },
+  "record_interpretation": {
+    "reported_external_boundary": "PASS_REPORTED",
+    "frontier_lifecycle": "CANDIDATE",
+    "restore_status": "UNVERIFIED",
+    "unresolved_gates": [
+      "historical_source_byte_revalidation",
+      "trusted_authenticity_root",
+      "independent_attestation",
+      "lifecycle_promotion",
+      "external_action_authorization"
+    ],
+    "next_action": "Not specified by the submitted report; the canonical frontier records no subsequent action."
+  }
+}
